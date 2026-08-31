@@ -1,12 +1,91 @@
 ---
 import Base from '../layouts/Base.astro';
 const locale = 'en';
+const updated = 'August 31, 2026';
 ---
-<Base title="Terms of Use — Skala Convert" description="Terms of Use for Skala Convert." locale={locale} alternates={[]}>
+<Base
+  title="Terms of Use — Skala Convert"
+  description="Terms and conditions for using the Skala Convert unit converters."
+  locale={locale}
+  alternates={[]}
+>
   <main class="wrap">
     <div class="hero"><h1>Terms of Use</h1></div>
-    <section class="block" style="max-width:var(--measure)">
-      <p>TODO: texto legal a revisar antes da submissão ao AdSense.</p>
+
+    <section class="block legal">
+      <p class="updated">Last updated: {updated}</p>
+
+      <p>By using Skala Convert you agree to the terms below. If you do not agree, please do not use the site.</p>
+
+      <h2>What this site is</h2>
+      <p>
+        Skala Convert provides free unit conversion tools for general reference. It is
+        offered as-is, with no guarantee that it will be available, uninterrupted, or
+        free of errors.
+      </p>
+
+      <h2>Accuracy</h2>
+      <p>
+        The conversion factors used here come from the internationally defined values —
+        one inch is exactly 0.0254 metres, one pound is exactly 0.45359237 kilograms, and
+        so on. Results are rounded for display, so a figure shown here may differ in the
+        final decimal places from one calculated at higher precision.
+      </p>
+      <p>
+        <strong>Do not rely on this site where an error would matter.</strong> For
+        medical dosing, engineering tolerances, legal or financial figures, structural
+        calculations, aviation, or navigation, verify the result against an authoritative
+        source appropriate to that field. We accept no liability for any loss, injury, or
+        damage arising from use of these results.
+      </p>
+
+      <h2>Availability</h2>
+      <p>
+        The site may be changed, interrupted, or discontinued at any time without notice.
+        Converters, units, and pages may be added or removed.
+      </p>
+
+      <h2>Acceptable use</h2>
+      <p>
+        You may use the converters freely, including for commercial work. You may not
+        attempt to disrupt the site, scrape it at a volume that degrades service for
+        others, or reproduce the site wholesale to create a duplicate for the purpose of
+        diverting traffic.
+      </p>
+
+      <h2>Intellectual property</h2>
+      <p>
+        Conversion factors are facts and belong to no one. The name Skala Convert, the
+        site's design, and its written content are ours. The underlying arithmetic is
+        free for anyone to study and reimplement.
+      </p>
+
+      <h2>Third-party links and advertising</h2>
+      <p>
+        Advertising on this site is served by Google and its partners. We do not select,
+        endorse, or vouch for the advertisers shown, and we are not responsible for the
+        content of any site an advertisement leads to.
+      </p>
+
+      <h2>Changes to these terms</h2>
+      <p>
+        These terms may be updated. The date at the top of this page reflects the most
+        recent version, and continued use of the site after a change means you accept it.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        Questions about these terms:
+        <a href="mailto:contact@skalaconvert.com">contact@skalaconvert.com</a>
+      </p>
     </section>
   </main>
 </Base>
+
+<style>
+  .legal { max-width: var(--measure); }
+  .legal h2 { font-size: 1.125rem; font-weight: 600; margin: var(--space-8) 0 var(--space-2); }
+  .legal p { margin: 0 0 var(--space-3); }
+  .legal a { color: var(--accent); }
+  .updated { color: var(--text-muted); font-size: .875rem; }
+</style>
