@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+import HubContent from '../components/HubContent.astro';
+import { t } from '../i18n/utils.js';
+
+const locale = 'en';
+const seed = Astro.url.searchParams.get('v') ?? '1';
+const alternates = [
+  { hreflang: 'en', href: 'https://skalaconvert.com/' },
+  { hreflang: 'de-DE', href: 'https://skalaconvert.com/de/' }
+];
+---
+<Base
+  title={`Skala Convert — ${t('tagline', locale)}`}
+  description={t('siteDescription', locale)}
+  locale={locale}
+  alternates={alternates}
+>
+  <HubContent locale={locale} seed={seed} />
+</Base>

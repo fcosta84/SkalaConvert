@@ -1,0 +1,57 @@
+---
+import Base from '../../layouts/Base.astro';
+import Converter from '../../components/Converter.astro';
+import ConversionTable from '../../components/ConversionTable.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import { routes } from '../../data/pairs.js';
+import { categorySlugs, pairSlug } from '../../i18n/slugs.js';
+import { buildPairCopy } from '../../lib/copy.js';
+import { t } from '../../i18n/utils.js';
+
+export function getStaticPaths() {
+  const locale = 'en';
+  return routes.map(r => ({
+    params: {
+      category: categorySlugs[locale][r.category],
+      pair: pairSlug(r.from, r.to, locale)
+    },
+    props: { ...r, locale }
+  }));
+}
+
+const { category, from, to, locale } = Astro.props;
+const copy = buildPairCopy({ category, from, to, locale });
+const seed = Astro.url.searchParams.get('v') ?? '1';
+---
+<Base
+  title={copy.title}
+  description={copy.description}
+  locale={locale}
+  alternates={copy.alternates}
+>
+  <main class="wrap">
+    <div class="hero"><h1>{copy.h1}</h1></div>
+
+    <Converter category={category} from={from} to={to} seed={seed} locale={locale} showTabs={false} />
+
+    <AdSlot name="inline" />
+
+    <section class="block" aria-labelledby="formula-h">
+      <h2 class="section-title" id="formula-h">{t('formula', locale)}</h2>
+      <p class="formula">{copy.formula}</p>
+      <p class="worked">{copy.worked}</p>
+    </section>
+
+    <ConversionTable category={category} from={from} to={to} locale={locale} />
+
+    <AdSlot name="footer" />
+  </main>
+</Base>
+
+<style>
+  .formula, .worked {
+    font-family: var(--font-data); font-variant-numeric: tabular-nums;
+    font-size: 1.0625rem; margin: var(--space-3) 0 0;
+  }
+  .worked { color: var(--text-muted); }
+</style>
