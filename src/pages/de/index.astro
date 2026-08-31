@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import HubContent from '../../components/HubContent.astro';
+import { ogDefaultPath } from '../../i18n/slugs.js';
 import { t } from '../../i18n/utils.js';
 
 const locale = 'de';
@@ -15,6 +16,7 @@ const alternates = [
   description={t('siteDescription', locale)}
   locale={locale}
   alternates={alternates}
+  ogImage={ogDefaultPath(locale)}
 >
   <HubContent locale={locale} seed={seed} />
 </Base>

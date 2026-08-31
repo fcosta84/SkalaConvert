@@ -1,18 +1,18 @@
 ---
 import '../styles/global.css';
 import { t, htmlLang } from '../i18n/utils.js';
-import { categorySlugs } from '../i18n/slugs.js';
+import { ogDefaultPath } from '../i18n/slugs.js';
 
 const {
   title,
   description,
   locale = 'en',
   alternates = [],
-  ogImage = '/og-default.png'
+  ogImage
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
-const ogAbsolute = new URL(ogImage, Astro.site);
+const ogAbsolute = new URL(ogImage ?? ogDefaultPath(locale), Astro.site);
 const ADSENSE = import.meta.env.PUBLIC_ADSENSE_ID;
 const GA4 = import.meta.env.PUBLIC_GA4_ID;
 const xDefault = alternates.find(a => a.hreflang === 'en')?.href;

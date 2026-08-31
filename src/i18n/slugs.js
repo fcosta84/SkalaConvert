@@ -42,3 +42,13 @@ export function categoryPath(categoryKey, locale) {
 export function pairPath(categoryKey, from, to, locale) {
   return `${categoryPath(categoryKey, locale)}${pairSlug(from, to, locale)}/`;
 }
+
+// Caminho do card OG gerado no build (src/pages/og/[...slug].png.js)
+export function ogPath(categoryKey, from, to, locale) {
+  const prefix = locale === 'en' ? '/og' : `/og/${locale}`;
+  return `${prefix}/${categorySlugs[locale][categoryKey]}/${pairSlug(from, to, locale)}.png`;
+}
+
+export function ogDefaultPath(locale) {
+  return locale === 'en' ? '/og/default.png' : `/og/${locale}/default.png`;
+}

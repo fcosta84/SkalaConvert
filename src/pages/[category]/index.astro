@@ -6,7 +6,7 @@ import { categoryKeys, categories } from '../../data/categories.js';
 import { routes } from '../../data/pairs.js';
 import { convert, formatNumber } from '../../lib/convert.js';
 import { t, symbols, unitName } from '../../i18n/utils.js';
-import { categorySlugs, categoryPath, pairPath, locales } from '../../i18n/slugs.js';
+import { categorySlugs, categoryPath, pairPath, ogDefaultPath, locales } from '../../i18n/slugs.js';
 
 export function getStaticPaths() {
   const locale = 'en';
@@ -35,6 +35,7 @@ const alternates = locales.map(l => ({
     : `Convert ${name.toLowerCase()} units. Exact factors, instant results, shareable links.`}
   locale={locale}
   alternates={alternates}
+  ogImage={ogDefaultPath(locale)}
 >
   <main class="wrap">
     <div class="hero"><h1>{locale === 'de' ? `${name} umrechnen` : `${name} converter`}</h1></div>

@@ -1,6 +1,6 @@
 import { convert, formatNumber } from './convert.js';
 import { unitName, unitPlural, titleAbbr, symbols, t } from '../i18n/utils.js';
-import { pairPath, locales } from '../i18n/slugs.js';
+import { pairPath, ogPath, locales } from '../i18n/slugs.js';
 import { categories } from '../data/categories.js';
 
 // Texto derivado do dado, não de template retórico: título, fórmula e um
@@ -50,7 +50,9 @@ export function buildPairCopy({ category, from, to, locale }) {
     href: new URL(pairPath(category, from, to, l), 'https://skalaconvert.com').href
   }));
 
-  return { title, h1, description, formula, worked, alternates, oneFmt, sFrom, sTo };
+  const ogImage = ogPath(category, from, to, locale);
+
+  return { title, h1, description, formula, worked, alternates, ogImage, oneFmt, sFrom, sTo };
 }
 
 function temperatureFormula(from, to, locale) {
