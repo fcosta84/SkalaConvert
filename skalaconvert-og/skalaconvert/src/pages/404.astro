@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+import { categoryKeys } from '../data/categories.js';
+import { t } from '../i18n/utils.js';
+import { categoryPath } from '../i18n/slugs.js';
+const locale = 'en';
+---
+<Base title="Page not found — Skala Convert" description="Page not found." locale={locale} alternates={[]}>
+  <main class="wrap">
+    <div class="hero">
+      <h1>{t('notFound', locale)}</h1>
+      <p class="lede">{t('notFoundBody', locale)}</p>
+    </div>
+    <section class="block">
+      <ul class="cats-grid">
+        {categoryKeys.map(k => (
+          <li><a href={categoryPath(k, locale)}>{t(`categories.${k}`, locale)}</a></li>
+        ))}
+      </ul>
+    </section>
+  </main>
+</Base>

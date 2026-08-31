@@ -1,0 +1,23 @@
+---
+const { name } = Astro.props;
+const ADSENSE = import.meta.env.PUBLIC_ADSENSE_ID;
+const SLOTS = { top: '', inline: '', footer: '' };  // preencher após aprovação
+---
+{ADSENSE && SLOTS[name] && (
+  <aside class="ad" data-slot={name} aria-label="Advertisement">
+    <ins class="adsbygoogle" style="display:block"
+         data-ad-client={ADSENSE} data-ad-slot={SLOTS[name]}
+         data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script is:inline>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </aside>
+)}
+
+<style>
+  .ad { display: block; margin: var(--space-8) auto; overflow: hidden; }
+  .ad[data-slot="inline"], .ad[data-slot="footer"] { min-height: 280px; }
+  .ad[data-slot="top"] { min-height: 100px; }
+  @media (min-width: 768px) {
+    .ad[data-slot="inline"], .ad[data-slot="footer"] { min-height: 250px; }
+    .ad[data-slot="top"] { min-height: 90px; }
+  }
+</style>
