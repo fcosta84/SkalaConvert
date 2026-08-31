@@ -114,8 +114,11 @@ const home = locale === 'de' ? '/de/' : '/';
   <div class="wrap foot-row">
     <span>© {new Date().getFullYear()} Skala Convert</span>
     <nav aria-label="Legal">
-      <a href={locale === 'de' ? '/de/datenschutz/' : '/privacy-policy/'}>{t('privacy', locale)}</a>
-      <a href={locale === 'de' ? '/de/nutzungsbedingungen/' : '/terms-of-use/'}>{t('terms', locale)}</a>
+      {/* Enquanto as versões alemãs não existirem, o rodapé aponta direto para
+          o inglês: um salto de redirect a menos, e o revisor do AdSense
+          encontra a página legal sem intermediário. */}
+      <a href="/privacy-policy/">{t('privacy', locale)}</a>
+      <a href="/terms-of-use/">{t('terms', locale)}</a>
       <a href={locale === 'de' ? '/' : '/de/'}>{locale === 'de' ? 'English' : 'Deutsch'}</a>
     </nav>
   </div>

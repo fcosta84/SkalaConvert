@@ -1,6 +1,7 @@
 ---
 import Converter from './Converter.astro';
 import AdSlot from './AdSlot.astro';
+import BrowseBlocks from './BrowseBlocks.astro';
 import { pairs } from '../data/pairs.js';
 import { categoryKeys } from '../data/categories.js';
 import { convert, formatNumber } from '../lib/convert.js';
@@ -12,43 +13,14 @@ const popular = pairs.slice(0, 8);
 ---
 <main class="wrap">
   <div class="hero">
-    <h1>{t('tagline', locale)}</h1>
+    <h1>{t('hubH1', locale)}</h1>
   </div>
 
   <Converter category="length" from="inch" to="centimeter" seed={seed} locale={locale} />
 
   <AdSlot name="inline" />
 
-  <section class="block">
-    <div class="block-head">
-      <h2 class="section-title">{t('popular', locale)}</h2>
-    </div>
-    <ul class="pairs">
-      {popular.map(p => (
-        <li>
-          <a href={pairPath(p.category, p.from, p.to, locale)}>
-            <span class="p-name">
-              {unitName(p.from, locale)} → {unitName(p.to, locale)}
-            </span>
-            <span class="p-eq">
-              1 {symbols[p.from]} = {formatNumber(convert(1, p.category, p.from, p.to), locale)} {symbols[p.to]}
-            </span>
-          </a>
-        </li>
-      ))}
-    </ul>
-  </section>
-
-  <section class="block">
-    <div class="block-head">
-      <h2 class="section-title">{t('allCategories', locale)}</h2>
-    </div>
-    <ul class="cats-grid">
-      {categoryKeys.map(k => (
-        <li><a href={categoryPath(k, locale)}>{t(`categories.${k}`, locale)}</a></li>
-      ))}
-    </ul>
-  </section>
+  <BrowseBlocks locale={locale} />
 
   <AdSlot name="footer" />
 </main>

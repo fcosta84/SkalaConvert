@@ -1,5 +1,6 @@
 export default {
   siteName: 'Skala Convert',
+  hubH1: 'Einheitenrechner',
   tagline: 'Schnelle, genaue Einheitenrechner',
   siteDescription: 'Länge, Gewicht, Temperatur, Druck, Volumen und Geschwindigkeit umrechnen. Exakte Faktoren, sofortiges Ergebnis, teilbare Links.',
   from: 'Von',
@@ -12,6 +13,7 @@ export default {
   invalidInput: 'Geben Sie eine Zahl ein.',
   otherUnits: 'Weitere Einheiten',
   allCategories: 'Nach Kategorie',
+  allPairs: 'Alle Umrechnungen',
   popular: 'Häufige Umrechnungen',
   formula: 'Formel',
   conversionTable: 'Umrechnungstabelle',

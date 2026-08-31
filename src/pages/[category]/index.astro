@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import Converter from '../../components/Converter.astro';
 import AdSlot from '../../components/AdSlot.astro';
+import BrowseBlocks from '../../components/BrowseBlocks.astro';
 import { categoryKeys, categories } from '../../data/categories.js';
 import { routes } from '../../data/pairs.js';
 import { convert, formatNumber } from '../../lib/convert.js';
@@ -46,7 +47,7 @@ const alternates = locales.map(l => ({
 
     {related.length > 0 && (
       <section class="block">
-        <div class="block-head"><h2 class="section-title">{t('popular', locale)}</h2></div>
+        <div class="block-head"><h2 class="section-title">{t('allPairs', locale)}</h2></div>
         <ul class="pairs">
           {related.map(r => (
             <li>
@@ -61,6 +62,8 @@ const alternates = locales.map(l => ({
         </ul>
       </section>
     )}
+
+    <BrowseBlocks locale={locale} />
 
     <AdSlot name="footer" />
   </main>

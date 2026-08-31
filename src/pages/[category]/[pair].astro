@@ -3,6 +3,7 @@ import Base from '../../layouts/Base.astro';
 import Converter from '../../components/Converter.astro';
 import ConversionTable from '../../components/ConversionTable.astro';
 import AdSlot from '../../components/AdSlot.astro';
+import BrowseBlocks from '../../components/BrowseBlocks.astro';
 import { routes } from '../../data/pairs.js';
 import { categorySlugs, pairSlug } from '../../i18n/slugs.js';
 import { buildPairCopy } from '../../lib/copy.js';
@@ -44,6 +45,8 @@ const seed = Astro.url.searchParams.get('v') ?? '1';
     </section>
 
     <ConversionTable category={category} from={from} to={to} locale={locale} />
+
+    <BrowseBlocks locale={locale} exclude={{ category, from, to }} />
 
     <AdSlot name="footer" />
   </main>

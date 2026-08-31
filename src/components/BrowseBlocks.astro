@@ -1,0 +1,44 @@
+---
+import { pairs } from '../data/pairs.js';
+import { categoryKeys } from '../data/categories.js';
+import { convert, formatNumber } from '../lib/convert.js';
+import { t, symbols, unitName } from '../i18n/utils.js';
+import { categoryPath, pairPath } from '../i18n/slugs.js';
+
+// exclude: par atual, para a página não linkar para ela mesma
+const { locale = 'en', exclude = null, limit = 8 } = Astro.props;
+
+const popular = pairs
+  .filter(p => !exclude || !(p.category === exclude.category &&
+    ((p.from === exclude.from && p.to === exclude.to) ||
+     (p.from === exclude.to && p.to === exclude.from))))
+  .slice(0, limit);
+---
+<section class="block">
+  <div class="block-head">
+    <h2 class="section-title">{t('popular', locale)}</h2>
+  </div>
+  <ul class="pairs">
+    {popular.map(p => (
+      <li>
+        <a href={pairPath(p.category, p.from, p.to, locale)}>
+          <span class="p-name">{unitName(p.from, locale)} → {unitName(p.to, locale)}</span>
+          <span class="p-eq">
+            1 {symbols[p.from]} = {formatNumber(convert(1, p.category, p.from, p.to), locale)} {symbols[p.to]}
+          </span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<section class="block">
+  <div class="block-head">
+    <h2 class="section-title">{t('allCategories', locale)}</h2>
+  </div>
+  <ul class="cats-grid">
+    {categoryKeys.map(k => (
+      <li><a href={categoryPath(k, locale)}>{t(`categories.${k}`, locale)}</a></li>
+    ))}
+  </ul>
+</section>

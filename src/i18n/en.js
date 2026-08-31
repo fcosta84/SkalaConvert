@@ -1,5 +1,6 @@
 export default {
   siteName: 'Skala Convert',
+  hubH1: 'Unit converter',
   tagline: 'Fast, accurate unit converters',
   siteDescription: 'Convert length, weight, temperature, pressure, volume and speed. Exact factors, instant results, shareable links.',
   from: 'From',
@@ -12,6 +13,7 @@ export default {
   invalidInput: 'Enter a number.',
   otherUnits: 'Other units',
   allCategories: 'Browse by category',
+  allPairs: 'All conversions',
   popular: 'Popular conversions',
   formula: 'Formula',
   conversionTable: 'Conversion table',

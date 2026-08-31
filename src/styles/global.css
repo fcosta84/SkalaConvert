@@ -50,9 +50,9 @@ a{color:inherit}
 /* ---------- header ---------- */
 .site-head{border-bottom:1px solid var(--border);background:var(--surface-raised)}
 .head-row{display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);min-height:64px}
-.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-weight:600;letter-spacing:-.01em}
+.brand{display:flex;align-items:center;gap:.5rem;text-decoration:none;font-weight:600;letter-spacing:-.01em}
 .brand .mark{width:28px;height:28px;flex:none;color:var(--accent)}
-.brand b{font-weight:600}
+.brand b{font-weight:600;margin-right:-.22rem}
 .brand span{color:var(--text-muted);font-weight:400}
 .head-tools{display:flex;align-items:center;gap:var(--space-2)}
 .btn-ghost{
@@ -76,7 +76,7 @@ a{color:inherit}
   font:500 .75rem/1 var(--font-data);letter-spacing:.14em;text-transform:uppercase;
   color:var(--text-muted);margin:0 0 var(--space-3)
 }
-h1{font-size:clamp(1.75rem,1.2rem + 2.4vw,2.75rem);line-height:1.12;letter-spacing:-.025em;margin:0 0 var(--space-3);font-weight:600}
+h1{font-size:clamp(1.5rem,1.05rem + 2vw,2.75rem);text-wrap:balance;line-height:1.12;letter-spacing:-.025em;margin:0 0 var(--space-3);font-weight:600}
 .lede{margin:0;max-width:52ch;color:var(--text-muted);font-size:1.0625rem}
 
 /* ---------- converter ---------- */
@@ -136,7 +136,7 @@ input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible,su
 }
 .band-hint{margin:0;font-size:.875rem;color:var(--text-muted)}
 .readout{
-  justify-self:center;text-align:center;
+  justify-self:center;text-align:center;display:flex;align-items:center;justify-content:center;
   background:var(--surface-raised);border:1px solid var(--accent);
   border-radius:999px;padding:.55rem 1.25rem;box-shadow:var(--shadow);
   font-family:var(--font-data);font-variant-numeric:tabular-nums;font-weight:600;
@@ -208,8 +208,9 @@ h2.section-title{font-size:1.25rem;font-weight:600;letter-spacing:-.015em;margin
 
 /* ---------- responsive ---------- */
 @media(max-width:640px){
-  .io{grid-template-columns:1fr;padding:var(--space-4)}
-  .swap{justify-self:center;margin:0}
+  .io{grid-template-columns:1fr;gap:var(--space-3);padding:var(--space-4)}
+  .swap{justify-self:center;margin:calc(var(--space-1) * -1) 0}
+  .field{gap:var(--space-1)}
   .swap svg{transform:rotate(90deg)}
   .band-row{grid-template-columns:1fr;justify-items:stretch;text-align:center;padding:var(--space-4);gap:var(--space-3)}
   .band-row .btn{justify-self:center;order:3}
@@ -221,3 +222,6 @@ h2.section-title{font-size:1.25rem;font-weight:600;letter-spacing:-.015em;margin
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* Seta do select colada na borda em Android: reserva espaço à direita */
+select{padding-right:2.25rem;background-image:none}
