@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://skalaconvert.com/sitemap-index.xml
