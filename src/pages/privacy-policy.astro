@@ -1,11 +1,12 @@
 ---
 import Base from '../layouts/Base.astro';
+import BrowseBlocks from '../components/BrowseBlocks.astro';
 const locale = 'en';
 const updated = 'August 31, 2026';
 ---
 <Base
   title="Privacy Policy — Skala Convert"
-  description="How Skala Convert handles data, cookies and advertising."
+  description="Skala Convert runs every conversion in your browser and stores no visitor data. How cookies, Google AdSense and analytics work on this site, explained plainly."
   locale={locale}
   alternates={[]}
 >
@@ -93,6 +94,8 @@ const updated = 'August 31, 2026';
         <a href="mailto:contact@skalaconvert.com">contact@skalaconvert.com</a>
       </p>
     </section>
+
+    <BrowseBlocks locale={locale} limit={4} />
   </main>
 </Base>
 

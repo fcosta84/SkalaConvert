@@ -23,6 +23,8 @@ const unitKeys = Object.keys(categories[categoryKey].units);
 const [defFrom, defTo] = [unitKeys[0], unitKeys[1]];
 const name = t(`categories.${categoryKey}`, locale);
 const related = routes.filter(r => r.category === categoryKey);
+// Lista de unidades no snippet: alonga a descrição e cobre variações de busca
+const unitList = unitKeys.slice(0, 5).map(u => t(`units.${u}`, locale).toLowerCase()).join(', ');
 
 const alternates = locales.map(l => ({
   hreflang: l === 'de' ? 'de-DE' : 'en',
@@ -32,8 +34,8 @@ const alternates = locales.map(l => ({
 <Base
   title={locale === 'de' ? `${name} umrechnen — Skala Convert` : `${name} Converter — Skala Convert`}
   description={locale === 'de'
-    ? `${name} umrechnen. Exakte Faktoren, sofortiges Ergebnis, teilbare Links.`
-    : `Convert ${name.toLowerCase()} units. Exact factors, instant results, shareable links.`}
+    ? `${name} umrechnen: ${unitList}. Exakte Faktoren und sofortiges Ergebnis.`
+    : `Convert ${name.toLowerCase()} units: ${unitList}. Exact definition factors, instant results and shareable links.`}
   locale={locale}
   alternates={alternates}
   ogImage={ogDefaultPath(locale)}

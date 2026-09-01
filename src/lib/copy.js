@@ -20,21 +20,31 @@ export function buildPairCopy({ category, from, to, locale }) {
 
   const isTemp = categories[category].affine;
 
+  // Nomes compostos ("Kilometer pro Stunde") estouram o limite de 62 caracteres
+  // do título. Nesses casos o símbolo entra no lugar do nome por extenso.
+  const deFrom = nFrom.length > 12 ? aFrom : nFrom;
+  const deTo = nTo.length > 12 ? aTo : nTo;
+  // Se o nome curto já é o próprio símbolo, o parêntese repetiria a mesma coisa
+  const deRedundant = deFrom === aFrom && deTo === aTo;
   const title = locale === 'de'
-    ? `${nFrom} in ${nTo} (${aFrom} in ${aTo}) Umrechner`
+    ? (deRedundant
+        ? `${deFrom} in ${deTo} Umrechner — Einheiten umrechnen`
+        : `${deFrom} in ${deTo} (${aFrom} in ${aTo}) Umrechner`)
     : `${pFrom} to ${pTo} (${sFrom} to ${sTo}) Converter`;
 
   const h1 = locale === 'de'
     ? `${nFrom} in ${nTo} umrechnen`
     : `Convert ${pFrom.toLowerCase()} to ${pTo.toLowerCase()}`;
 
-  const description = isTemp
-    ? (locale === 'de'
-        ? `${nFrom} in ${nTo} umrechnen. Sofortiges Ergebnis, Formel und Umrechnungstabelle.`
-        : `Convert ${nFrom} to ${nTo}. Instant result, formula and conversion table.`)
-    : (locale === 'de'
-        ? `1 ${sFrom} = ${oneFmt} ${sTo}. Sofortiges Ergebnis, Formel und Umrechnungstabelle.`
-        : `1 ${sFrom} = ${oneFmt} ${sTo}. Instant result, formula and conversion table.`);
+  // Descrição gerada: alvo de 120-160 caracteres. A versão curta anterior
+  // desperdiçava metade do snippet que o Google exibe.
+  const description = locale === 'de'
+    ? (isTemp
+        ? `${nFrom} in ${nTo} umrechnen. Kostenloser Rechner mit Formel, Umrechnungstabelle und teilbarem Link.`
+        : `${nFrom} in ${nTo} umrechnen: 1 ${sFrom} = ${oneFmt} ${sTo}. Kostenloser Rechner mit Formel, Umrechnungstabelle und teilbarem Link.`)
+    : (isTemp
+        ? `Convert ${pFrom.toLowerCase()} to ${pTo.toLowerCase()}. Free instant converter with the formula, a conversion table and a shareable link.`
+        : `Convert ${pFrom.toLowerCase()} to ${pTo.toLowerCase()}: 1 ${sFrom} = ${oneFmt} ${sTo}. Free instant converter with formula, conversion table and shareable link.`);
 
   const formula = isTemp
     ? temperatureFormula(from, to, locale)

@@ -1,11 +1,12 @@
 ---
 import Base from '../layouts/Base.astro';
+import BrowseBlocks from '../components/BrowseBlocks.astro';
 const locale = 'en';
 const updated = 'August 31, 2026';
 ---
 <Base
   title="Terms of Use — Skala Convert"
-  description="Terms and conditions for using the Skala Convert unit converters."
+  description="Terms for using the Skala Convert unit converters: accuracy limits, where not to rely on the results, acceptable use, advertising and intellectual property."
   locale={locale}
   alternates={[]}
 >
@@ -79,6 +80,8 @@ const updated = 'August 31, 2026';
         <a href="mailto:contact@skalaconvert.com">contact@skalaconvert.com</a>
       </p>
     </section>
+
+    <BrowseBlocks locale={locale} limit={4} />
   </main>
 </Base>
 

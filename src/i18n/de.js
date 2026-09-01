@@ -28,6 +28,7 @@ export default {
     speed: 'Geschwindigkeit'
   },
   titleAbbr: {
+    milePerHour: 'mph', kilometerPerHour: 'km/h',
     inch: 'Zoll', foot: 'Fuß', mile: 'Meilen', pound: 'Pfund',
     gallonUS: 'Gallonen'
   },
