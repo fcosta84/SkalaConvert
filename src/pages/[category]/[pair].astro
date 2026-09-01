@@ -28,6 +28,7 @@ const seed = Astro.url.searchParams.get('v') ?? '1';
   title={copy.title}
   description={copy.description}
   ogImage={copy.ogImage}
+  schema={copy.faqSchema}
   locale={locale}
   alternates={copy.alternates}
 >
@@ -35,6 +36,18 @@ const seed = Astro.url.searchParams.get('v') ?? '1';
     <div class="hero"><h1>{copy.h1}</h1></div>
 
     <Converter category={category} from={from} to={to} seed={seed} locale={locale} showTabs={false} />
+
+    {copy.editorial && (
+      <section class="editorial">
+        <p class="lede">{copy.editorial.reversed ? copy.editorial.ledeReverse : copy.editorial.lede}</p>
+        {copy.editorial.sections.map(sec => (
+          <>
+            <h2>{sec.h2}</h2>
+            <div set:html={sec.html} />
+          </>
+        ))}
+      </section>
+    )}
 
     <AdSlot name="inline" />
 

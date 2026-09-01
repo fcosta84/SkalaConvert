@@ -2,6 +2,7 @@ import { convert, formatNumber } from './convert.js';
 import { unitName, unitPlural, titleAbbr, symbols, t } from '../i18n/utils.js';
 import { pairPath, ogPath, locales } from '../i18n/slugs.js';
 import { categories } from '../data/categories.js';
+import { getPairCopy } from '../content/pairCopy.js';
 
 // Texto derivado do dado, não de template retórico: título, fórmula e um
 // exemplo resolvido. Nada aqui inventa prosa que não venha dos fatores.
@@ -52,7 +53,26 @@ export function buildPairCopy({ category, from, to, locale }) {
 
   const ogImage = ogPath(category, from, to, locale);
 
-  return { title, h1, description, formula, worked, alternates, ogImage, oneFmt, sFrom, sTo };
+  // Texto editorial escrito à mão, quando existir para este par.
+  // Só em inglês por enquanto: a versão alemã é reescrita, não traduzida (Fase 4).
+  const editorial = locale === 'en' ? getPairCopy(category, from, to) : null;
+  const faqSchema = editorial ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: editorial.faq.map(([q, a]) => ({
+      '@type': 'Question',
+      name: q,
+      acceptedAnswer: { '@type': 'Answer', text: a }
+    }))
+  } : null;
+
+  return {
+    // O título e a descrição escritos à mão vencem os gerados, quando existirem
+    title: editorial && !editorial.reversed ? editorial.title : title,
+    description: editorial && !editorial.reversed ? editorial.description : description,
+    h1, formula, worked, alternates, ogImage, oneFmt, sFrom, sTo,
+    editorial, faqSchema
+  };
 }
 
 function temperatureFormula(from, to, locale) {

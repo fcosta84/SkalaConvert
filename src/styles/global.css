@@ -225,3 +225,13 @@ h2.section-title{font-size:1.25rem;font-weight:600;letter-spacing:-.015em;margin
 
 /* Seta do select colada na borda em Android: reserva espaço à direita */
 select{padding-right:2.25rem;background-image:none}
+
+/* ---------- texto editorial das páginas de par ---------- */
+.editorial{max-width:var(--measure);margin-top:var(--space-8)}
+.editorial .lede{font-size:1.1875rem;color:var(--text);margin:0 0 var(--space-6);font-weight:500}
+.editorial h2{font-size:1.125rem;font-weight:600;letter-spacing:-.01em;margin:var(--space-8) 0 var(--space-3)}
+.editorial p{margin:0 0 var(--space-3)}
+.mini-table{border-collapse:collapse;margin:var(--space-4) 0;min-width:200px}
+.mini-table th,.mini-table td{text-align:left;padding:.4rem 1.25rem .4rem 0;border-bottom:1px solid var(--border);
+  font-family:var(--font-data);font-variant-numeric:tabular-nums;font-size:.9375rem}
+.mini-table th{color:var(--text-muted);font-weight:500}

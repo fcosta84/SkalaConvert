@@ -8,7 +8,8 @@ const {
   description,
   locale = 'en',
   alternates = [],
-  ogImage
+  ogImage,
+  schema = null
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
@@ -43,6 +44,8 @@ const home = locale === 'de' ? '/de/' : '/';
   <meta property="og:locale:alternate" content={locale === 'de' ? 'en_US' : 'de_DE'} />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image:alt" content={title} />
+
+  {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
