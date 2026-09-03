@@ -89,7 +89,7 @@ export const pairCopy = {
         the shortcut overshoots by about 10 percent. Fine for guessing, not fine for a medication dose
         or a freight quote. Doses themselves are often in micrograms, where a similar
         thousandfold error is possible — see
-        <a href="/weight/microgram-to-gram/">micrograms to grams</a>.</p>
+        <a href="/weight/micrograms-to-grams/">micrograms to grams</a>.</p>
         <p>The other trap is the troy pound, still used for precious metals. It holds 12 troy ounces
         and weighs about 373 g, not 454 g. A pound of gold and a pound of flour are different
         weights.</p>`
