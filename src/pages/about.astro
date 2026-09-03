@@ -1,0 +1,151 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import BrowseBlocks from '../components/BrowseBlocks.astro';
+import { ogDefaultPath } from '../i18n/slugs.js';
+
+const locale = 'en';
+const updated = 'September 3, 2026';
+
+// @graph num nó só: Base aceita uma prop `schema`, e Organization precisa
+// existir em algum lugar do site para o nome da marca aparecer no SERP.
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': 'https://skalaconvert.com/#organization',
+      name: 'Skala Convert',
+      url: 'https://skalaconvert.com/',
+      email: 'contact@skalaconvert.com',
+      founder: { '@type': 'Person', name: 'Filipe Oliveira' },
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'São Paulo',
+        addressRegion: 'SP',
+        addressCountry: 'BR'
+      }
+    },
+    {
+      '@type': 'AboutPage',
+      '@id': 'https://skalaconvert.com/about/#webpage',
+      url: 'https://skalaconvert.com/about/',
+      name: 'About Skala Convert',
+      about: { '@id': 'https://skalaconvert.com/#organization' },
+      dateModified: '2026-09-03'
+    }
+  ]
+};
+---
+<Base
+  title="About Skala Convert — Who We Are and How We Work"
+  description="Who builds Skala Convert, where our conversion factors come from, and how the site is funded."
+  locale={locale}
+  alternates={[]}
+  ogImage={ogDefaultPath(locale)}
+  schema={schema}
+>
+  <main class="wrap">
+    <Breadcrumbs locale={locale} items={[{ label: 'About' }]} />
+    <div class="hero"><h1>About Skala Convert</h1></div>
+
+    <section class="block legal">
+      <p class="updated">Last updated: {updated}</p>
+
+      <p>
+        Skala Convert is a free unit conversion site built and maintained by Filipe
+        Oliveira, based in São Paulo, Brazil. It exists for a simple reason: most people
+        who need to convert a measurement need it once, quickly, and want to trust the
+        number without thinking about it.
+      </p>
+      <p>
+        The site covers nine categories of measurement — length, weight, temperature,
+        area, volume, time, pressure, energy and speed — with a dedicated page for the
+        conversions people actually search for, such as
+        <a href="/length/inches-to-cm/">inches to centimeters</a> or
+        <a href="/pressure/psi-to-bar/">psi to bar</a>.
+      </p>
+
+      <h2>Where our numbers come from</h2>
+      <p>
+        Every conversion factor on this site is a defined value from an international
+        standard, not a rounded approximation. One inch is exactly 0.0254 meters and one
+        pound is exactly 0.45359237 kilograms, as fixed by the international yard and
+        pound agreement and published by NIST in Special Publication 811. SI unit
+        definitions follow the BIPM's SI Brochure.
+      </p>
+      <p>
+        Where a conversion involves a unit with more than one definition — the US gallon
+        and the imperial gallon, for example — we say which one the page uses and name
+        the source. Where a figure comes from a specific body, such as ICAO for aviation
+        units or UNECE Regulation 39 for vehicle speedometers, that body is named in the
+        text rather than left implicit.
+      </p>
+      <p>Conversions run entirely in your browser. Nothing you type is sent to a server.</p>
+
+      <h2>Accuracy and its limits</h2>
+      <p>
+        We check the factors against their published sources and correct errors when we
+        find them. Even so, results are rounded for display, and this site is intended
+        for quick reference and general use.
+      </p>
+      <p>
+        Do not use these results as the sole basis for engineering, medical, legal,
+        financial or safety-critical decisions. For work where an error would matter,
+        verify against the primary standard and consult a qualified professional.
+      </p>
+
+      <h2>How the site is funded</h2>
+      <p>
+        Skala Convert is free to use and funded by advertising. We use Google AdSense to
+        serve ads and Google Analytics to understand which pages are useful. Both use
+        cookies, and both stay switched off until you consent through the banner shown on
+        your first visit. The details are in our
+        <a href="/privacy-policy/">Privacy Policy</a>.
+      </p>
+      <p>
+        We do not sell products, we do not ask you to register, and we do not maintain
+        user accounts.
+      </p>
+
+      <h2>Frequently asked questions</h2>
+
+      <h3>Can I link to a Skala Convert page from my own site?</h3>
+      <p>
+        Yes. Link to any page freely, no permission needed. If you would like to embed a
+        converter rather than link to one, <a href="/contact/">write to us</a> — we are
+        interested in the use case.
+      </p>
+
+      <h3>How do I report an error or suggest a conversion?</h3>
+      <p>
+        Email <a href="mailto:contact@skalaconvert.com">contact@skalaconvert.com</a>. For
+        a wrong result, include the page URL and the exact value you entered; that is
+        usually enough for us to reproduce it. Corrections to conversion factors are
+        treated as urgent.
+      </p>
+
+      <h3>Is there an API?</h3>
+      <p>Not at the moment.</p>
+
+      <h3>What data do you collect?</h3>
+      <p>
+        The values you type are never transmitted anywhere. Google AdSense and Google
+        Analytics may set cookies and collect usage data once you consent, exactly as
+        described in the <a href="/privacy-policy/">Privacy Policy</a>. We hold no
+        accounts and no personal profiles of our own.
+      </p>
+    </section>
+
+    <BrowseBlocks locale={locale} limit={4} />
+  </main>
+</Base>
+
+<style>
+  .legal { max-width: var(--measure); }
+  .legal h2 { font-size: 1.125rem; font-weight: 600; margin: var(--space-8) 0 var(--space-2); }
+  .legal h3 { font-size: 1rem; font-weight: 600; margin: var(--space-6) 0 var(--space-2); }
+  .legal p { margin: 0 0 var(--space-3); }
+  .legal a { color: var(--accent); }
+  .updated { color: var(--text-muted); font-size: .875rem; }
+</style>

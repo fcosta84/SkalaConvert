@@ -3,6 +3,7 @@ import Base from '../../../layouts/Base.astro';
 import Converter from '../../../components/Converter.astro';
 import AdSlot from '../../../components/AdSlot.astro';
 import BrowseBlocks from '../../../components/BrowseBlocks.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import { categoryKeys, categories } from '../../../data/categories.js';
 import { routes } from '../../../data/pairs.js';
 import { convert, formatNumber } from '../../../lib/convert.js';
@@ -41,6 +42,7 @@ const alternates = locales.map(l => ({
   ogImage={ogDefaultPath(locale)}
 >
   <main class="wrap">
+    <Breadcrumbs locale={locale} items={[{ label: name }]} />
     <div class="hero"><h1>{locale === 'de' ? `${name} umrechnen` : `${name} converter`}</h1></div>
 
     <Converter category={categoryKey} from={defFrom} to={defTo} seed={seed} locale={locale} showTabs={false} />

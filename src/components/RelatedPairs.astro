@@ -1,0 +1,86 @@
+---
+/**
+ * "Read also" da página de par. Três funções numa seção:
+ *   1. link real (não JS) para a conversão inversa
+ *   2. até 3 pares da mesma categoria, ordenados por volume
+ *   3. volta ao hub da categoria + reporte de erro por e-mail
+ *
+ * Complementa o BrowseBlocks, que é global: aqui os links são todos da mesma
+ * categoria, que é o que sustenta o cluster temático.
+ *
+ * Texto âncora sempre descritivo — nunca "clique aqui".
+ */
+import { routes } from '../data/pairs.js';
+import { convert, formatNumber } from '../lib/convert.js';
+import { t, symbols, unitPlural } from '../i18n/utils.js';
+import { categoryPath, pairPath } from '../i18n/slugs.js';
+
+const { category, from, to, locale = 'en' } = Astro.props;
+
+const conn = t('pairConnectorText', locale);
+const label = (f, tt) => `${unitPlural(f, locale)} ${conn} ${unitPlural(tt, locale)}`;
+const eq = (f, tt) =>
+  `1 ${symbols[f]} = ${formatNumber(convert(1, category, f, tt), locale)} ${symbols[tt]}`;
+
+// Mesma categoria, excluindo esta rota e a inversa (já linkada em destaque).
+// Três é o teto: mais que isso vira lista de links e dilui cada um.
+const seen = new Set([`${from}>${to}`, `${to}>${from}`]);
+const related = routes
+  .filter(r => r.category === category)
+  .filter(r => {
+    const key = `${r.from}>${r.to}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  })
+  .sort((a, b) => (b.volume ?? 0) - (a.volume ?? 0))
+  .slice(0, 3);
+
+// mailto com assunto e URL preenchidos: reporte a um clique, sem formulário
+const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
+const mailto = 'mailto:contact@skalaconvert.com'
+  + `?subject=${encodeURIComponent(t('reportSubject', locale))}`
+  + `&body=${encodeURIComponent(pageUrl + '\n\n')}`;
+---
+<section class="block related" aria-labelledby="related-h">
+  <div class="block-head">
+    <h2 class="section-title" id="related-h">{t('readAlso', locale)}</h2>
+  </div>
+
+  <ul class="pairs">
+    <li class="is-inverse">
+      <a href={pairPath(category, to, from, locale)}>
+        <span class="r-kicker">{t('inverse', locale)}</span>
+        <span class="p-name">{label(to, from)}</span>
+        <span class="p-eq">{eq(to, from)}</span>
+      </a>
+    </li>
+    {related.map(r => (
+      <li>
+        <a href={pairPath(r.category, r.from, r.to, locale)}>
+          <span class="p-name">{label(r.from, r.to)}</span>
+          <span class="p-eq">{eq(r.from, r.to)}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+
+  <p class="related-foot">
+    <a href={categoryPath(category, locale)}>
+      {t('allIn', locale)} {t(`categories.${category}`, locale).toLowerCase()}
+    </a>
+    <span aria-hidden="true"> · </span>
+    <a href={mailto} rel="nofollow">{t('reportError', locale)}</a>
+  </p>
+</section>
+
+<style>
+  .related .is-inverse a { border-color: var(--border-strong); }
+  .r-kicker {
+    font: 500 .6875rem/1 var(--font-data);
+    letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted);
+  }
+  .related-foot { margin: var(--space-4) 0 0; font-size: .875rem; color: var(--text-muted); }
+  .related-foot a { color: var(--text-muted); }
+  .related-foot a:hover { color: var(--accent); }
+</style>

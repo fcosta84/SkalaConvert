@@ -1,0 +1,106 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import BrowseBlocks from '../components/BrowseBlocks.astro';
+import { ogDefaultPath } from '../i18n/slugs.js';
+
+const locale = 'en';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  url: 'https://skalaconvert.com/contact/',
+  name: 'Contact Skala Convert',
+  mainEntity: {
+    '@type': 'Organization',
+    '@id': 'https://skalaconvert.com/#organization',
+    name: 'Skala Convert',
+    email: 'contact@skalaconvert.com',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'customer support',
+      email: 'contact@skalaconvert.com',
+      availableLanguage: ['en', 'pt']
+    }
+  }
+};
+---
+<Base
+  title="Contact Skala Convert"
+  description="How to reach Skala Convert to report a wrong result, suggest a conversion or ask about the site."
+  locale={locale}
+  alternates={[]}
+  ogImage={ogDefaultPath(locale)}
+  schema={schema}
+>
+  <main class="wrap">
+    <Breadcrumbs locale={locale} items={[{ label: 'Contact' }]} />
+    <div class="hero"><h1>Contact</h1></div>
+
+    <section class="block legal">
+      <p>The fastest way to reach us is email:</p>
+      <p class="email">
+        <a href="mailto:contact@skalaconvert.com">contact@skalaconvert.com</a>
+      </p>
+      <p>
+        There is no contact form on this page, and that is deliberate: a form would mean
+        collecting and storing your details on a server, which is something this site
+        avoids doing.
+      </p>
+      <p>We read everything and usually reply within five business days.</p>
+
+      <h2>Reporting a wrong result</h2>
+      <p>
+        This is the message we most want to receive. To let us reproduce the problem,
+        please include:
+      </p>
+      <ul>
+        <li>the page URL, for example <code>skalaconvert.com/length/inches-to-cm/</code></li>
+        <li>the exact value you entered</li>
+        <li>the result you got and the result you expected</li>
+        <li>the source you are comparing against, if you have one</li>
+      </ul>
+      <p>
+        Put <strong>Report a problem</strong> in the subject line. Factor errors are
+        corrected as a priority, and the page carries a revision date once it has been
+        checked.
+      </p>
+
+      <h2>Suggesting a conversion or a feature</h2>
+      <p>
+        Tell us which conversion you were looking for and, if you can, the context —
+        cooking, workshop, travel, study. Knowing why a conversion is needed shapes the
+        examples we write into the page. Subject line: <strong>Suggestion</strong>.
+      </p>
+
+      <h2>Other enquiries</h2>
+      <p>
+        Licensing, embedding a converter, press, or anything else: same address, plain
+        subject line.
+      </p>
+
+      <h2>Site details</h2>
+      <p>
+        Filipe Oliveira, São Paulo, SP, Brazil —
+        Email: <a href="mailto:contact@skalaconvert.com">contact@skalaconvert.com</a>
+      </p>
+      <p>
+        See also <a href="/about/">About Skala Convert</a> and our
+        <a href="/privacy-policy/">Privacy Policy</a>.
+      </p>
+    </section>
+
+    <BrowseBlocks locale={locale} limit={4} />
+  </main>
+</Base>
+
+<style>
+  .legal { max-width: var(--measure); }
+  .legal h2 { font-size: 1.125rem; font-weight: 600; margin: var(--space-8) 0 var(--space-2); }
+  .legal p { margin: 0 0 var(--space-3); }
+  .legal ul { margin: 0 0 var(--space-3); padding-left: 1.2rem; }
+  .legal li { margin-bottom: .25rem; }
+  .legal a { color: var(--accent); }
+  .legal code { font-family: var(--font-data); font-size: .9em; }
+  .email { font-family: var(--font-data); font-size: 1.125rem; }
+</style>
