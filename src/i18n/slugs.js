@@ -1,17 +1,18 @@
-export const locales = ['en', 'de'];
+export const locales = ['en', 'es'];
 
 export const categorySlugs = {
   en: { length: 'length', mass: 'weight', temperature: 'temperature',
         area: 'area', volume: 'volume', time: 'time',
         pressure: 'pressure', energy: 'energy', speed: 'speed' },
-  de: { length: 'laenge', mass: 'gewicht', temperature: 'temperatur',
-        area: 'flaeche', volume: 'volumen', time: 'zeit',
-        pressure: 'druck', energy: 'energie', speed: 'geschwindigkeit' }
+  es: { length: 'longitud', mass: 'peso', temperature: 'temperatura',
+        area: 'superficie', volume: 'volumen', time: 'tiempo',
+        pressure: 'presion', energy: 'energia', speed: 'velocidad' }
 };
 
-export const pairConnector = { en: 'to', de: 'in' };
+export const pairConnector = { en: 'to', es: 'a' };
 
-// Eszett fora da URL: "fuß" vira %C3%9F e polui o link compartilhado em chat.
+// Sem acentos nem eñe na URL: "presión" vira %C3%B3 e polui o link
+// compartilhado em chat. O texto visível na página usa a grafia correta.
 export const unitSlugs = {
   en: { inch: 'inches', centimeter: 'cm', pound: 'lbs', kilogram: 'kg',
         foot: 'feet', meter: 'meters', mile: 'miles', kilometer: 'km',
@@ -19,14 +20,16 @@ export const unitSlugs = {
         milePerHour: 'mph', kilometerPerHour: 'kph', gallonUS: 'gallons',
         liter: 'liters', microgram: 'micrograms', gram: 'grams',
         deciliter: 'deciliters', milliliter: 'milliliters',
-        kiloliter: 'kiloliters', celsius: 'celsius', fahrenheit: 'fahrenheit' },
-  de: { inch: 'zoll', centimeter: 'cm', pound: 'pfund', kilogram: 'kg',
-        foot: 'fuss', meter: 'meter', mile: 'meilen', kilometer: 'km',
-        millimeter: 'mm', yard: 'yard', psi: 'psi', bar: 'bar',
-        milePerHour: 'mph', kilometerPerHour: 'kmh', gallonUS: 'gallonen',
-        liter: 'liter', microgram: 'mikrogramm', gram: 'gramm',
-        deciliter: 'deziliter', milliliter: 'milliliter',
-        kiloliter: 'kiloliter', celsius: 'celsius', fahrenheit: 'fahrenheit' }
+        kiloliter: 'kiloliters', celsius: 'celsius', fahrenheit: 'fahrenheit',
+        ounce: 'ounces', fluidOunceUS: 'fluid-ounces' },
+  es: { inch: 'pulgadas', centimeter: 'cm', pound: 'libras', kilogram: 'kg',
+        foot: 'pies', meter: 'metros', mile: 'millas', kilometer: 'km',
+        millimeter: 'mm', yard: 'yardas', psi: 'psi', bar: 'bar',
+        milePerHour: 'mph', kilometerPerHour: 'kmh', gallonUS: 'galones',
+        liter: 'litros', microgram: 'microgramos', gram: 'gramos',
+        deciliter: 'decilitros', milliliter: 'ml',
+        kiloliter: 'kilolitros', celsius: 'centigrados', fahrenheit: 'fahrenheit',
+        ounce: 'onzas', fluidOunceUS: 'onzas-liquidas' }
 };
 
 export function pairSlug(from, to, locale) {
@@ -51,4 +54,16 @@ export function ogPath(categoryKey, from, to, locale) {
 
 export function ogDefaultPath(locale) {
   return locale === 'en' ? '/og/default.png' : `/og/${locale}/default.png`;
+}
+
+// Caminhos institucionais por idioma — o slug faz parte da localização.
+export const pagePaths = {
+  en: { about: '/about/', contact: '/contact/',
+        privacy: '/privacy-policy/', terms: '/terms-of-use/' },
+  es: { about: '/es/acerca-de/', contact: '/es/contacto/',
+        privacy: '/es/politica-de-privacidad/', terms: '/es/terminos-de-uso/' }
+};
+
+export function hreflang(locale) {
+  return locale === 'es' ? 'es' : 'en';
 }

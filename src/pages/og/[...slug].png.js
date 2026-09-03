@@ -11,14 +11,14 @@ export function getStaticPaths() {
       params: {
         slug: locale === 'en'
           ? `${categorySlugs[locale][r.category]}/${pairSlug(r.from, r.to, locale)}`
-          : `de/${categorySlugs[locale][r.category]}/${pairSlug(r.from, r.to, locale)}`
+          : `${locale}/${categorySlugs[locale][r.category]}/${pairSlug(r.from, r.to, locale)}`
       },
       props: { ...r, locale, kind: 'pair' }
     }))
   );
 
   const defaults = locales.map(locale => ({
-    params: { slug: locale === 'en' ? 'default' : 'de/default' },
+    params: { slug: locale === 'en' ? 'default' : `${locale}/default` },
     props: { locale, kind: 'default' }
   }));
 

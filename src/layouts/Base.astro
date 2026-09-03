@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 import { t, htmlLang } from '../i18n/utils.js';
-import { ogDefaultPath } from '../i18n/slugs.js';
+import { ogDefaultPath, pagePaths } from '../i18n/slugs.js';
 
 const {
   title,
@@ -17,7 +17,8 @@ const ogAbsolute = new URL(ogImage ?? ogDefaultPath(locale), Astro.site);
 const ADSENSE = import.meta.env.PUBLIC_ADSENSE_ID;
 const GA4 = import.meta.env.PUBLIC_GA4_ID;
 const xDefault = alternates.find(a => a.hreflang === 'en')?.href;
-const home = locale === 'de' ? '/de/' : '/';
+const home = locale === 'es' ? '/es/' : '/';
+const paths = pagePaths[locale] ?? pagePaths.en;
 ---
 <!DOCTYPE html>
 <html lang={htmlLang(locale)} data-theme="light">
@@ -40,8 +41,8 @@ const home = locale === 'de' ? '/de/' : '/';
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content={title} />
   <meta property="og:site_name" content="Skala Convert" />
-  <meta property="og:locale" content={locale === 'de' ? 'de_DE' : 'en_US'} />
-  <meta property="og:locale:alternate" content={locale === 'de' ? 'en_US' : 'de_DE'} />
+  <meta property="og:locale" content={locale === 'es' ? 'es_MX' : 'en_US'} />
+  <meta property="og:locale:alternate" content={locale === 'es' ? 'en_US' : 'es_MX'} />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image:alt" content={title} />
 
@@ -98,7 +99,7 @@ const home = locale === 'de' ? '/de/' : '/';
     <div class="head-tools">
       <nav class="lang" aria-label="Language">
         <a href="/" aria-current={locale === 'en' ? 'true' : undefined}>EN</a>
-        <a href="/de/" aria-current={locale === 'de' ? 'true' : undefined}>DE</a>
+        <a href="/es/" aria-current={locale === 'es' ? 'true' : undefined}>ES</a>
       </nav>
       <button class="btn-ghost" id="theme" type="button" aria-pressed="false">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
@@ -117,14 +118,11 @@ const home = locale === 'de' ? '/de/' : '/';
   <div class="wrap foot-row">
     <span>© {new Date().getFullYear()} Skala Convert</span>
     <nav aria-label="Legal">
-      {/* Enquanto as versões alemãs não existirem, o rodapé aponta direto para
-          o inglês: um salto de redirect a menos, e o revisor do AdSense
-          encontra a página legal sem intermediário. */}
-      <a href="/about/">{t('about', locale)}</a>
-      <a href="/contact/">{t('contact', locale)}</a>
-      <a href="/privacy-policy/">{t('privacy', locale)}</a>
-      <a href="/terms-of-use/">{t('terms', locale)}</a>
-      <a href={locale === 'de' ? '/' : '/de/'}>{locale === 'de' ? 'English' : 'Deutsch'}</a>
+      <a href={paths.about}>{t('about', locale)}</a>
+      <a href={paths.contact}>{t('contact', locale)}</a>
+      <a href={paths.privacy}>{t('privacy', locale)}</a>
+      <a href={paths.terms}>{t('terms', locale)}</a>
+      <a href={locale === 'es' ? '/' : '/es/'}>{locale === 'es' ? 'English' : 'Español'}</a>
     </nav>
   </div>
 </footer>

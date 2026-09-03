@@ -22,49 +22,47 @@ export function buildPairCopy({ category, from, to, locale }) {
 
   // Nomes compostos ("Kilometer pro Stunde") estouram o limite de 62 caracteres
   // do título. Nesses casos o símbolo entra no lugar do nome por extenso.
-  const deFrom = nFrom.length > 12 ? aFrom : nFrom;
-  const deTo = nTo.length > 12 ? aTo : nTo;
+  const esFrom = pFrom.length > 14 ? aFrom : pFrom;
+  const esTo = pTo.length > 14 ? aTo : pTo;
   // Se o nome curto já é o próprio símbolo, o parêntese repetiria a mesma coisa
-  const deRedundant = deFrom === aFrom && deTo === aTo;
-  const title = locale === 'de'
-    ? (deRedundant
-        ? `${deFrom} in ${deTo} Umrechner — Einheiten umrechnen`
-        : `${deFrom} in ${deTo} (${aFrom} in ${aTo}) Umrechner`)
+  const esRedundant = esFrom === aFrom && esTo === aTo;
+  const title = locale === 'es'
+    ? (esRedundant
+        ? `${esFrom} a ${esTo} — Convertidor de unidades`
+        : `${esFrom} a ${esTo} (${aFrom} a ${aTo}) — Convertidor`)
     : `${pFrom} to ${pTo} (${sFrom} to ${sTo}) Converter`;
 
-  const h1 = locale === 'de'
-    ? `${nFrom} in ${nTo} umrechnen`
+  const h1 = locale === 'es'
+    ? `Convertir ${pFrom.toLowerCase()} a ${pTo.toLowerCase()}`
     : `Convert ${pFrom.toLowerCase()} to ${pTo.toLowerCase()}`;
 
   // Descrição gerada: alvo de 120-160 caracteres. A versão curta anterior
   // desperdiçava metade do snippet que o Google exibe.
-  const description = locale === 'de'
+  const description = locale === 'es'
     ? (isTemp
-        ? `${nFrom} in ${nTo} umrechnen. Kostenloser Rechner mit Formel, Umrechnungstabelle und teilbarem Link.`
-        : `${nFrom} in ${nTo} umrechnen: 1 ${sFrom} = ${oneFmt} ${sTo}. Kostenloser Rechner mit Formel, Umrechnungstabelle und teilbarem Link.`)
+        ? `Convierte ${pFrom.toLowerCase()} a ${pTo.toLowerCase()}. Convertidor gratuito con la fórmula, tabla de conversión y enlace para compartir.`
+        : `Convierte ${pFrom.toLowerCase()} a ${pTo.toLowerCase()}: 1 ${sFrom} = ${oneFmt} ${sTo}. Convertidor gratuito con fórmula, tabla de conversión y enlace para compartir.`)
     : (isTemp
         ? `Convert ${pFrom.toLowerCase()} to ${pTo.toLowerCase()}. Free instant converter with the formula, a conversion table and a shareable link.`
         : `Convert ${pFrom.toLowerCase()} to ${pTo.toLowerCase()}: 1 ${sFrom} = ${oneFmt} ${sTo}. Free instant converter with formula, conversion table and shareable link.`);
 
   const formula = isTemp
     ? temperatureFormula(from, to, locale)
-    : (locale === 'de'
-        ? `${nTo} = ${nFrom} × ${oneFmt}`
-        : `${pTo} = ${pFrom} × ${oneFmt}`);
+    : `${pTo} = ${pFrom} × ${oneFmt}`;
 
   const sample = isTemp ? 20 : 10;
   const worked = `${formatNumber(sample, locale)} ${sFrom} = ` +
     `${formatNumber(convert(sample, category, from, to), locale)} ${sTo}`;
 
   const alternates = locales.map(l => ({
-    hreflang: l === 'de' ? 'de-DE' : 'en',
+    hreflang: l === 'es' ? 'es' : 'en',
     href: new URL(pairPath(category, from, to, l), 'https://skalaconvert.com').href
   }));
 
   const ogImage = ogPath(category, from, to, locale);
 
   // Texto editorial escrito à mão, quando existir para este par.
-  // Só em inglês por enquanto: a versão alemã é reescrita, não traduzida (Fase 4).
+  // Só em inglês por enquanto: a versão espanhola é reescrita, não traduzida.
   const editorial = locale === 'en' ? getPairCopy(category, from, to) : null;
   const faqSchema = editorial ? {
     '@context': 'https://schema.org',

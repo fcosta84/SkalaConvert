@@ -16,6 +16,10 @@ export const pairs = [
   { category: 'volume',      from: 'deciliter',   to: 'milliliter',       volume: 15700 },
   { category: 'length',      from: 'millimeter',  to: 'meter',            volume: 14800 },
   { category: 'length',      from: 'yard',        to: 'meter',            volume: 14800 },
+  // Adicionados a partir do levantamento em espanhol (MX/ES, set/2026):
+  // cozinha é o maior bloco de demanda hispanofalante ainda descoberto.
+  { category: 'volume',      from: 'fluidOunceUS', to: 'milliliter',      volume: 61800 },
+  { category: 'mass',        from: 'ounce',        to: 'gram',            volume: 39700 },
   // Decisão editorial, não orientada pela amostra: o concorrente não ranqueia
   // para este par nesses mercados, mas é das conversões mais buscadas do mundo.
   { category: 'temperature', from: 'celsius',     to: 'fahrenheit',       volume: null }

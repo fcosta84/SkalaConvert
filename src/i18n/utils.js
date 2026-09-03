@@ -1,7 +1,7 @@
 import en from './en.js';
-import de from './de.js';
+import es from './es.js';
 
-const dicts = { en, de };
+const dicts = { en, es };
 
 // Símbolos são internacionais — não se traduzem.
 export const symbols = {
@@ -57,5 +57,5 @@ export function unitLabel(unitKey, locale = 'en') {
 }
 
 export function htmlLang(locale) {
-  return locale === 'de' ? 'de-DE' : 'en';
+  return locale === 'es' ? 'es' : 'en';
 }

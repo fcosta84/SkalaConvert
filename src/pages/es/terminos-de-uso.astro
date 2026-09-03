@@ -1,0 +1,107 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import BrowseBlocks from '../../components/BrowseBlocks.astro';
+import { ogDefaultPath } from '../../i18n/slugs.js';
+
+const locale = 'es';
+const updated = '3 de septiembre de 2026';
+
+const alternates = [
+  { hreflang: 'en', href: 'https://skalaconvert.com/terms-of-use/' },
+  { hreflang: 'es', href: 'https://skalaconvert.com/es/terminos-de-uso/' }
+];
+---
+<Base
+  title="Términos de Uso — Skala Convert"
+  description="Condiciones de uso de los conversores de Skala Convert: límites de precisión, dónde no confiar en los resultados, uso aceptable, publicidad y propiedad intelectual."
+  locale={locale}
+  alternates={alternates}
+  ogImage={ogDefaultPath(locale)}
+>
+  <main class="wrap">
+    <Breadcrumbs locale={locale} items={[{ label: 'Términos de Uso' }]} />
+    <div class="hero"><h1>Términos de Uso</h1></div>
+
+    <section class="block legal">
+      <p class="updated">Última actualización: {updated}</p>
+      <p>
+        Al usar Skala Convert aceptas los términos que siguen. Si no estás de acuerdo, no
+        utilices el sitio.
+      </p>
+
+      <h2>Qué es este sitio</h2>
+      <p>
+        Skala Convert ofrece herramientas gratuitas de conversión de unidades para
+        consulta general. Se proporciona tal cual, sin garantía de disponibilidad,
+        continuidad ni ausencia de errores.
+      </p>
+
+      <h2>Precisión</h2>
+      <p>
+        Los factores de conversión usados aquí provienen de los valores definidos
+        internacionalmente: una pulgada equivale exactamente a 0,0254 metros, una libra a
+        0,45359237 kilogramos, y así sucesivamente. Los resultados se redondean al
+        mostrarlos, por lo que una cifra de este sitio puede diferir en los últimos
+        decimales de una calculada con mayor precisión.
+      </p>
+      <p>
+        <strong>No confíes en este sitio cuando un error importe.</strong> Para
+        dosificación médica, tolerancias de ingeniería, cifras legales o financieras,
+        cálculos estructurales, aviación o navegación, verifica el resultado contra una
+        fuente autorizada del campo correspondiente. No asumimos responsabilidad alguna
+        por pérdidas, lesiones o daños derivados del uso de estos resultados.
+      </p>
+
+      <h2>Disponibilidad</h2>
+      <p>
+        El sitio puede cambiar, interrumpirse o descontinuarse en cualquier momento sin
+        aviso. Se pueden añadir o retirar conversores, unidades y páginas.
+      </p>
+
+      <h2>Uso aceptable</h2>
+      <p>
+        Puedes usar los conversores libremente, incluso para trabajo comercial. No puedes
+        intentar interrumpir el sitio, extraer datos a un volumen que degrade el servicio
+        para los demás, ni reproducir el sitio en bloque para crear un duplicado con el
+        fin de desviar tráfico.
+      </p>
+
+      <h2>Propiedad intelectual</h2>
+      <p>
+        Los factores de conversión son hechos y no pertenecen a nadie. El nombre Skala
+        Convert, el diseño del sitio y sus textos son nuestros. La aritmética subyacente
+        es libre para que cualquiera la estudie y la reimplemente.
+      </p>
+
+      <h2>Enlaces de terceros y publicidad</h2>
+      <p>
+        La publicidad de este sitio la sirve Google y sus socios. No seleccionamos, ni
+        respaldamos, ni avalamos a los anunciantes mostrados, y no somos responsables del
+        contenido de los sitios a los que lleve un anuncio.
+      </p>
+
+      <h2>Cambios en estos términos</h2>
+      <p>
+        Estos términos pueden actualizarse. La fecha del encabezado refleja la versión
+        más reciente, y seguir usando el sitio tras un cambio implica que lo aceptas.
+      </p>
+
+      <h2>Contacto</h2>
+      <p>
+        Dudas sobre estos términos:
+        <a href="mailto:contact@skalaconvert.com">contact@skalaconvert.com</a>
+      </p>
+    </section>
+
+    <BrowseBlocks locale={locale} limit={4} />
+  </main>
+</Base>
+
+<style>
+  .legal { max-width: var(--measure); }
+  .legal h2 { font-size: 1.125rem; font-weight: 600; margin: var(--space-8) 0 var(--space-2); }
+  .legal p { margin: 0 0 var(--space-3); }
+  .legal a { color: var(--accent); }
+  .updated { color: var(--text-muted); font-size: .875rem; }
+</style>

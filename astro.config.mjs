@@ -5,12 +5,12 @@ export default defineConfig({
   site: 'https://skalaconvert.com',
   trailingSlash: 'always',
   i18n: {
-    locales: ['en', 'de'],
+    locales: ['en', 'es'],
     defaultLocale: 'en',
     routing: { prefixDefaultLocale: false }
   },
   integrations: [
-    sitemap({ i18n: { defaultLocale: 'en', locales: { en: 'en', de: 'de-DE' } } })
+    sitemap({ i18n: { defaultLocale: 'en', locales: { en: 'en', es: 'es' } } })
   ],
   build: { inlineStylesheets: 'auto' }
 });

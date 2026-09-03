@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import BrowseBlocks from '../components/BrowseBlocks.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
 const locale = 'en';
 const updated = 'August 31, 2026';
 ---
@@ -8,9 +9,13 @@ const updated = 'August 31, 2026';
   title="Terms of Use — Skala Convert"
   description="Terms for using the Skala Convert unit converters: accuracy limits, where not to rely on the results, acceptable use, advertising and intellectual property."
   locale={locale}
-  alternates={[]}
+  alternates={[
+    { hreflang: 'en', href: 'https://skalaconvert.com/terms-of-use/' },
+    { hreflang: 'es', href: 'https://skalaconvert.com/es/terminos-de-uso/' }
+  ]}
 >
   <main class="wrap">
+    <Breadcrumbs locale={locale} items={[{ label: "Terms of Use" }]} />
     <div class="hero"><h1>Terms of Use</h1></div>
 
     <section class="block legal">

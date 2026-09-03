@@ -1,0 +1,122 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import BrowseBlocks from '../../components/BrowseBlocks.astro';
+import { ogDefaultPath } from '../../i18n/slugs.js';
+
+const locale = 'es';
+const updated = '3 de septiembre de 2026';
+
+const alternates = [
+  { hreflang: 'en', href: 'https://skalaconvert.com/privacy-policy/' },
+  { hreflang: 'es', href: 'https://skalaconvert.com/es/politica-de-privacidad/' }
+];
+---
+<Base
+  title="Política de Privacidad — Skala Convert"
+  description="Skala Convert calcula todo en tu navegador y no almacena datos de visitantes. Cómo funcionan las cookies, Google AdSense y la analítica, explicado sin rodeos."
+  locale={locale}
+  alternates={alternates}
+  ogImage={ogDefaultPath(locale)}
+>
+  <main class="wrap">
+    <Breadcrumbs locale={locale} items={[{ label: 'Política de Privacidad' }]} />
+    <div class="hero"><h1>Política de Privacidad</h1></div>
+
+    <section class="block legal">
+      <p class="updated">Última actualización: {updated}</p>
+
+      <h2>La versión corta</h2>
+      <p>
+        Todas las conversiones de este sitio se ejecutan en tu navegador. Los números que
+        escribes nunca se nos envían, ni se almacenan, ni se registran. No hay cuentas,
+        ni registro, ni base de datos de visitantes.
+      </p>
+      <p>
+        Sí recogemos estadísticas de uso anónimas y mostramos publicidad. Ambas cosas se
+        describen abajo.
+      </p>
+
+      <h2>Qué se guarda en tu dispositivo</h2>
+      <p>
+        Si cambias entre el tema claro y el oscuro, esa elección se guarda en el
+        almacenamiento local de tu navegador para que el sitio se abra como lo dejaste.
+        Nunca sale de tu dispositivo y puedes borrarla desde la configuración del
+        navegador.
+      </p>
+      <p>
+        Al convertir un valor, el número aparece en la dirección de la página (por
+        ejemplo <code>?v=100</code>) para que el enlace se pueda compartir. Eso ocurre
+        íntegramente en tu navegador. Solo lo vemos si decides enviarle el enlace a
+        alguien.
+      </p>
+
+      <h2>Analítica</h2>
+      <p>
+        Usamos Google Analytics para saber qué conversores se utilizan y dónde el sitio
+        va lento. Registra las páginas visitadas, la ubicación aproximada a nivel de país
+        o región y el tipo de dispositivo. No lo usamos para identificar a personas
+        concretas.
+      </p>
+
+      <h2>Publicidad y cookies</h2>
+      <p>
+        Este sitio se financia con publicidad servida a través de Google AdSense. Google
+        y sus socios pueden usar cookies para mostrar anuncios basados en tus visitas
+        previas a este y a otros sitios web.
+      </p>
+      <p>
+        Puedes desactivar la publicidad personalizada en la
+        <a href="https://www.google.com/settings/ads" rel="noopener">configuración de anuncios de Google</a>,
+        o rechazar el uso de cookies de proveedores externos en
+        <a href="https://www.aboutads.info/choices/" rel="noopener">aboutads.info</a>.
+      </p>
+
+      <h2>Tus opciones</h2>
+      <p>
+        En tu primera visita se te pregunta si aceptas las cookies de publicidad y
+        analítica. Nada que requiera consentimiento se ejecuta antes de que respondas, y
+        rechazarlo no limita el uso de los conversores.
+      </p>
+      <p>
+        Cuando aplica el RGPD, nuestra base legal para la analítica y la publicidad
+        personalizada es tu consentimiento, que puedes retirar en cualquier momento
+        reabriendo la configuración de cookies o borrando las cookies de este sitio.
+      </p>
+      <p>
+        Tienes derecho a solicitar acceso, rectificación o supresión de los datos
+        personales que tengamos sobre ti. En la práctica no tenemos ninguno: no
+        gestionamos cuentas ni guardamos registros de visitantes. Las solicitudes sobre
+        datos en poder de Google deben dirigirse a Google, cuya política de privacidad
+        está en
+        <a href="https://policies.google.com/privacy" rel="noopener">policies.google.com/privacy</a>.
+      </p>
+
+      <h2>Menores</h2>
+      <p>
+        Este sitio es una herramienta de uso general y no está dirigido a menores. No
+        recogemos conscientemente información personal de nadie.
+      </p>
+
+      <h2>Cambios</h2>
+      <p>Si esta política cambia, cambia con ella la fecha del encabezado.</p>
+
+      <h2>Contacto</h2>
+      <p>
+        Dudas sobre esta política:
+        <a href="mailto:contact@skalaconvert.com">contact@skalaconvert.com</a>
+      </p>
+    </section>
+
+    <BrowseBlocks locale={locale} limit={4} />
+  </main>
+</Base>
+
+<style>
+  .legal { max-width: var(--measure); }
+  .legal h2 { font-size: 1.125rem; font-weight: 600; margin: var(--space-8) 0 var(--space-2); }
+  .legal p { margin: 0 0 var(--space-3); }
+  .legal a { color: var(--accent); }
+  .legal code { font-family: var(--font-data); font-size: .9em; }
+  .updated { color: var(--text-muted); font-size: .875rem; }
+</style>

@@ -1,0 +1,163 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import BrowseBlocks from '../../components/BrowseBlocks.astro';
+import { ogDefaultPath } from '../../i18n/slugs.js';
+
+const locale = 'es';
+const updated = '3 de septiembre de 2026';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': 'https://skalaconvert.com/#organization',
+      name: 'Skala Convert',
+      url: 'https://skalaconvert.com/',
+      email: 'contact@skalaconvert.com',
+      founder: { '@type': 'Person', name: 'Filipe Oliveira' },
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'São Paulo',
+        addressRegion: 'SP',
+        addressCountry: 'BR'
+      }
+    },
+    {
+      '@type': 'AboutPage',
+      '@id': 'https://skalaconvert.com/es/acerca-de/#webpage',
+      url: 'https://skalaconvert.com/es/acerca-de/',
+      name: 'Acerca de Skala Convert',
+      inLanguage: 'es',
+      about: { '@id': 'https://skalaconvert.com/#organization' },
+      dateModified: '2026-09-03'
+    }
+  ]
+};
+
+const alternates = [
+  { hreflang: 'en', href: 'https://skalaconvert.com/about/' },
+  { hreflang: 'es', href: 'https://skalaconvert.com/es/acerca-de/' }
+];
+---
+<Base
+  title="Acerca de Skala Convert — Quiénes somos y cómo trabajamos"
+  description="Quién desarrolla Skala Convert, de dónde salen los factores de conversión y cómo se financia el sitio."
+  locale={locale}
+  alternates={alternates}
+  ogImage={ogDefaultPath(locale)}
+  schema={schema}
+>
+  <main class="wrap">
+    <Breadcrumbs locale={locale} items={[{ label: 'Acerca de' }]} />
+    <div class="hero"><h1>Acerca de Skala Convert</h1></div>
+
+    <section class="block legal">
+      <p class="updated">Última actualización: {updated}</p>
+
+      <p>
+        Skala Convert es un conversor de unidades gratuito desarrollado y mantenido por
+        Filipe Oliveira, con sede en São Paulo (Brasil). Existe por una razón sencilla:
+        quien necesita convertir una medida suele necesitarla una sola vez, con prisa, y
+        quiere fiarse del número sin tener que comprobarlo.
+      </p>
+      <p>
+        El sitio cubre nueve magnitudes — longitud, peso, temperatura, superficie,
+        volumen, tiempo, presión, energía y velocidad — con una página propia para las
+        conversiones que la gente busca de verdad, como
+        <a href="/es/longitud/pulgadas-a-cm/">pulgadas a centímetros</a> o
+        <a href="/es/presion/psi-a-bar/">psi a bar</a>.
+      </p>
+
+      <h2>De dónde salen nuestros números</h2>
+      <p>
+        Cada factor de conversión del sitio es un valor definido por una norma
+        internacional, no una aproximación redondeada. Una pulgada equivale exactamente a
+        0,0254 metros y una libra a 0,45359237 kilogramos, según el acuerdo internacional
+        de la yarda y la libra publicado por el NIST en la Special Publication 811. Las
+        definiciones del SI siguen el folleto del SI del BIPM.
+      </p>
+      <p>
+        Cuando una unidad tiene más de una definición — el galón estadounidense y el
+        galón imperial, o la onza de peso y la onza líquida — indicamos cuál usa la
+        página y citamos la fuente. Cuando una cifra procede de un organismo concreto,
+        como la OACI para unidades aeronáuticas o el Reglamento 39 de la CEPE para
+        velocímetros, ese organismo aparece nombrado en el texto.
+      </p>
+      <p>
+        Las conversiones se calculan íntegramente en tu navegador. Nada de lo que
+        escribes se envía a un servidor.
+      </p>
+
+      <h2>Precisión y sus límites</h2>
+      <p>
+        Contrastamos los factores con sus fuentes publicadas y corregimos los errores
+        cuando los detectamos. Aun así, los resultados se redondean al mostrarlos, y este
+        sitio está pensado para consulta rápida y uso general.
+      </p>
+      <p>
+        No utilices estos resultados como única base para decisiones de ingeniería,
+        médicas, jurídicas, financieras o de seguridad. Cuando un error importe, verifica
+        contra la norma original y consulta a un profesional cualificado.
+      </p>
+
+      <h2>Cómo se financia el sitio</h2>
+      <p>
+        Skala Convert es gratuito y se financia con publicidad. Usamos Google AdSense
+        para mostrar anuncios y Google Analytics para saber qué páginas resultan útiles.
+        Ambos utilizan cookies y ambos permanecen desactivados hasta que aceptas el aviso
+        que aparece en tu primera visita. Los detalles están en nuestra
+        <a href="/es/politica-de-privacidad/">Política de Privacidad</a>.
+      </p>
+      <p>
+        No vendemos productos, no pedimos registro y no gestionamos cuentas de usuario.
+      </p>
+
+      <h2>Preguntas frecuentes</h2>
+
+      <h3>¿Puedo enlazar a una página de Skala Convert desde mi sitio?</h3>
+      <p>
+        Sí, sin necesidad de permiso. Si prefieres incrustar un conversor en lugar de
+        enlazarlo, <a href="/es/contacto/">escríbenos</a>: nos interesa conocer el caso.
+      </p>
+
+      <h3>¿Cómo informo de un error o sugiero una conversión?</h3>
+      <p>
+        Escribe a <a href="mailto:contact@skalaconvert.com">contact@skalaconvert.com</a>.
+        Si el resultado es incorrecto, indica la URL de la página y el valor exacto que
+        introdujiste; suele bastar para reproducirlo. Las correcciones de factores se
+        tratan como urgentes.
+      </p>
+
+      <h3>¿Hay API?</h3>
+      <p>De momento no.</p>
+
+      <h3>¿Qué datos recogéis?</h3>
+      <p>
+        Los valores que escribes no se transmiten a ningún sitio. Google AdSense y Google
+        Analytics pueden instalar cookies y recoger datos de uso una vez que das tu
+        consentimiento, tal como se describe en la
+        <a href="/es/politica-de-privacidad/">Política de Privacidad</a>. No tenemos
+        cuentas ni perfiles personales propios.
+      </p>
+
+      <h3>¿Por qué el sitio está en inglés y español?</h3>
+      <p>
+        Son los dos idiomas que hoy podemos escribir y revisar bien. Preferimos publicar
+        pocos idiomas cuidados a traducir muchos de forma automática.
+      </p>
+    </section>
+
+    <BrowseBlocks locale={locale} limit={4} />
+  </main>
+</Base>
+
+<style>
+  .legal { max-width: var(--measure); }
+  .legal h2 { font-size: 1.125rem; font-weight: 600; margin: var(--space-8) 0 var(--space-2); }
+  .legal h3 { font-size: 1rem; font-weight: 600; margin: var(--space-6) 0 var(--space-2); }
+  .legal p { margin: 0 0 var(--space-3); }
+  .legal a { color: var(--accent); }
+  .updated { color: var(--text-muted); font-size: .875rem; }
+</style>

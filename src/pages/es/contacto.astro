@@ -1,0 +1,112 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import BrowseBlocks from '../../components/BrowseBlocks.astro';
+import { ogDefaultPath } from '../../i18n/slugs.js';
+
+const locale = 'es';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  url: 'https://skalaconvert.com/es/contacto/',
+  name: 'Contacto — Skala Convert',
+  inLanguage: 'es',
+  mainEntity: {
+    '@type': 'Organization',
+    '@id': 'https://skalaconvert.com/#organization',
+    name: 'Skala Convert',
+    email: 'contact@skalaconvert.com',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'customer support',
+      email: 'contact@skalaconvert.com',
+      availableLanguage: ['es', 'en', 'pt']
+    }
+  }
+};
+
+const alternates = [
+  { hreflang: 'en', href: 'https://skalaconvert.com/contact/' },
+  { hreflang: 'es', href: 'https://skalaconvert.com/es/contacto/' }
+];
+---
+<Base
+  title="Contacto — Skala Convert"
+  description="Cómo contactar con Skala Convert para informar de un error, sugerir una conversión o consultar sobre el sitio."
+  locale={locale}
+  alternates={alternates}
+  ogImage={ogDefaultPath(locale)}
+  schema={schema}
+>
+  <main class="wrap">
+    <Breadcrumbs locale={locale} items={[{ label: 'Contacto' }]} />
+    <div class="hero"><h1>Contacto</h1></div>
+
+    <section class="block legal">
+      <p>La vía más rápida es el correo electrónico:</p>
+      <p class="email">
+        <a href="mailto:contact@skalaconvert.com">contact@skalaconvert.com</a>
+      </p>
+      <p>
+        En esta página no hay formulario de contacto, y es intencionado: un formulario
+        implicaría recoger y almacenar tus datos en un servidor, algo que este sitio
+        evita.
+      </p>
+      <p>Leemos todos los mensajes y solemos responder en cinco días laborables.</p>
+
+      <h2>Informar de un resultado incorrecto</h2>
+      <p>
+        Es el mensaje que más nos interesa recibir. Para poder reproducir el problema,
+        incluye:
+      </p>
+      <ul>
+        <li>la URL de la página, por ejemplo <code>skalaconvert.com/es/longitud/pulgadas-a-cm/</code></li>
+        <li>el valor exacto que introdujiste</li>
+        <li>el resultado obtenido y el que esperabas</li>
+        <li>la fuente con la que lo comparas, si la tienes</li>
+      </ul>
+      <p>
+        Escribe <strong>Informar de un problema</strong> en el asunto. Los errores de
+        factor se corrigen de forma prioritaria, y la página muestra la fecha de revisión
+        una vez comprobada.
+      </p>
+
+      <h2>Sugerir una conversión o una función</h2>
+      <p>
+        Cuéntanos qué conversión buscabas y, si puedes, en qué contexto: cocina, taller,
+        viajes, estudios. Saber para qué se necesita una conversión determina los
+        ejemplos que escribimos en la página. Asunto: <strong>Sugerencia</strong>.
+      </p>
+
+      <h2>Otras consultas</h2>
+      <p>
+        Licencias, incrustar un conversor, prensa o cualquier otro asunto: misma
+        dirección, asunto claro.
+      </p>
+
+      <h2>Datos del sitio</h2>
+      <p>
+        Filipe Oliveira, São Paulo, SP, Brasil —
+        Correo: <a href="mailto:contact@skalaconvert.com">contact@skalaconvert.com</a>
+      </p>
+      <p>
+        Consulta también <a href="/es/acerca-de/">Acerca de Skala Convert</a> y nuestra
+        <a href="/es/politica-de-privacidad/">Política de Privacidad</a>.
+      </p>
+    </section>
+
+    <BrowseBlocks locale={locale} limit={4} />
+  </main>
+</Base>
+
+<style>
+  .legal { max-width: var(--measure); }
+  .legal h2 { font-size: 1.125rem; font-weight: 600; margin: var(--space-8) 0 var(--space-2); }
+  .legal p { margin: 0 0 var(--space-3); }
+  .legal ul { margin: 0 0 var(--space-3); padding-left: 1.2rem; }
+  .legal li { margin-bottom: .25rem; }
+  .legal a { color: var(--accent); }
+  .legal code { font-family: var(--font-data); font-size: .9em; }
+  .email { font-family: var(--font-data); font-size: 1.125rem; }
+</style>

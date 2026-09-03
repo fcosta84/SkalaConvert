@@ -42,7 +42,8 @@ export const pairCopy = {
         html: `<p>Clothing sizes. A W32 jean has a 32-inch waist, or 81.28 cm, but German and
         European menswear labels that as a 46 or 48. The relationship is a sizing chart shaped by cut
         and vanity sizing, not a fixed ratio. Converting the number gives you a measurement, not a
-        size.</p>`
+        size. For workshop and technical work the same inch converts to millimetres — see
+        <a href="/length/inches-to-mm/">inches to mm</a>.</p>`
       }
     ],
     faq: [
@@ -86,7 +87,9 @@ export const pairCopy = {
         h2: 'Where people get pounds to kg wrong',
         html: `<p>Halving. The mental shortcut turns 150 lb into 75 kg, but the real answer is 68 kg —
         the shortcut overshoots by about 10 percent. Fine for guessing, not fine for a medication dose
-        or a freight quote.</p>
+        or a freight quote. Doses themselves are often in micrograms, where a similar
+        thousandfold error is possible — see
+        <a href="/weight/microgram-to-gram/">micrograms to grams</a>.</p>
         <p>The other trap is the troy pound, still used for precious metals. It holds 12 troy ounces
         and weighs about 373 g, not 454 g. A pound of gold and a pound of flour are different
         weights.</p>`
@@ -131,7 +134,9 @@ export const pairCopy = {
         html: `<p>Writing 5.10 for five feet ten inches. It looks like a decimal but it is not: 5.10
         feet is 155.4 cm, while 5 feet 10 inches is 177.8 cm. That is a 22 cm error, and it appears
         constantly in spreadsheets and clinical records where the field accepts a decimal and the
-        person types a height.</p>`
+        person types a height. The reverse direction, converting a metric height into
+        feet and inches, has the same two-step problem — see
+        <a href="/length/cm-to-inches/">cm to inches</a>.</p>`
       }
     ],
     faq: [
@@ -220,7 +225,8 @@ export const pairCopy = {
         than a statute mile, and it is not a rounding of anything — it is one minute of arc of
         latitude, tied to the size of the planet. Aviation and shipping use it, and a speed in knots
         means nautical miles per hour. Converting a boat's speed as if knots were mph understates it
-        by 15 percent.</p>`
+        by 15 percent. Speed in knots follows from it — see
+        <a href="/speed/mph-to-kph/">mph to km/h</a>.</p>`
       }
     ],
     faq: [
@@ -378,7 +384,10 @@ export const pairCopy = {
             <tr><td>2.5</td><td>36.3</td></tr>
             <tr><td>3.0</td><td>43.5</td></tr>
           </tbody>
-        </table>`
+        </table>
+        <p>Tyre pressure is usually checked on the same trip as fuel —
+        <a href="/volume/gallons-to-liters/">gallons to liters</a> covers the other number
+        on the forecourt.</p>`
       },
       {
         h2: 'Where does the bar come from?',
@@ -455,6 +464,300 @@ export const pairCopy = {
       ['What is 1 mph in km/h?', 'One mile per hour equals exactly 1.609344 km/h. A 70 mph limit is 112.7 km/h.'],
       ['What speed is 10 on an American treadmill?', '16.1 km/h, because US treadmills default to mph. A 10 km/h pace is 6.2 on an mph display.'],
       ['Why does my speedometer read higher than GPS?', 'Regulations such as UNECE R39 require speedometers never to under-read and allow up to 10 percent plus 4 km/h over. The tolerance covers tire wear and pressure.']
+    ]
+  },
+
+  // ── Lote 02 (set/2026) ─────────────────────────────────────────────
+
+  'volume:gallonUS:liter': {
+    title: 'Gallons to Liters (gal to L) Converter',
+    description: 'Convert US gallons to liters. 1 US gallon = 3.785411784 L. Fuel, recipes, and why the UK gallon is different.',
+    lede: 'One US gallon is 3.785411784 litres.',
+    ledeReverse: 'One litre is 0.264172 US gallons.',
+    sections: [
+      {
+        h2: 'How many liters are in a gallon?',
+        html: `<p><strong>L = gal × 3.785411784</strong></p>
+        <p><strong>There are two gallons, and they are not close.</strong> The US liquid gallon is
+        3.785 L; the imperial gallon still used in the UK and parts of the Caribbean is 4.54609 L —
+        20% larger. A car advertised at 40 miles per gallon does substantially better on paper in
+        Britain than in America for no mechanical reason at all. If a figure comes from a British
+        source, check which gallon before converting.</p>`
+      },
+      {
+        h2: 'Fuel economy: mpg versus L/100 km',
+        html: `<p>Fuel economy is quoted as miles per gallon in the US and litres per 100 km almost
+        everywhere else, and the two run in opposite directions: higher mpg is better, lower L/100 km
+        is better. They are reciprocals, not scaled versions of each other. Thirty US mpg is
+        7.84 L/100 km.</p>`
+      },
+      {
+        h2: 'The gallon in the kitchen',
+        html: `<p>In the kitchen the gallon appears mostly as a fraction. A US quart is 0.946 L,
+        close enough to a litre that recipes treat them as equivalent and get away with it in soups
+        and stocks. In baking they are not equivalent — a 5% error in liquid changes a dough.</p>
+        <p>Reference: <strong>1 US gallon ≈ 3.8 L</strong>, and 4 litres is a little over a
+        gallon.</p>`
+      }
+    ],
+    faq: [
+      ['Is a UK gallon the same as a US gallon?', 'No. The imperial gallon is 4.54609 L, about 20% larger than the US gallon of 3.785 L.'],
+      ['How many liters in a 15 gallon tank?', '56.78 L.'],
+      ['What is 30 mpg in L/100 km?', '7.84 L/100 km, using US gallons.']
+    ]
+  },
+
+  'volume:liter:gallonUS': {
+    title: 'Liters to Gallons (L to gal) Converter',
+    description: 'Convert liters to US gallons. Divide by 3.785. Fuel prices, container sizes, and the imperial gallon difference.',
+    lede: 'Divide litres by 3.785 for US gallons. Fifty litres is 13.2 gallons.',
+    ledeReverse: 'One US gallon is 3.785411784 litres.',
+    sections: [
+      {
+        h2: 'How many gallons is one liter?',
+        html: `<p><strong>gal = L ÷ 3.785411784</strong>, which is 0.264172 gallons per litre.</p>
+        <p>This is the direction that matters when comparing fuel prices across borders. European
+        pumps price by the litre, American pumps by the gallon, and the numbers look wildly different
+        until converted — €1.70 per litre is $6.43 per US gallon at parity.</p>`
+      },
+      {
+        h2: 'Container sizes across markets',
+        html: `<p>Container sizes reveal how each market rounds. A US milk jug is one gallon
+        (3.785 L); European milk comes in 1 L and 2 L cartons. A US soda bottle is 2 L, adopted
+        from the metric standard and never converted back.</p>
+        <p>The litre itself is not an SI base unit — the cubic metre is. The litre is a permitted
+        name for a cubic decimetre, and one cubic metre holds exactly 1,000 litres.</p>`
+      }
+    ],
+    faq: [
+      ['How many gallons is 50 liters?', '13.21 US gallons, or 11.0 imperial gallons.'],
+      ['Is a liter an SI unit?', 'Not a base unit. The SI unit of volume is the cubic metre; the litre is an accepted name for one cubic decimetre.'],
+      ['Why is a soda bottle 2 liters in the United States?', 'The 2 L bottle was introduced during a metrication push in the 1970s and the format stuck, even though most other American packaging reverted to imperial.']
+    ]
+  },
+
+  'length:inch:millimeter': {
+    title: 'Inches to Millimeters (in to mm) Converter',
+    description: 'Convert inches to millimeters. 1 inch = 25.4 mm exactly. Drill bits, fractional inches, and workshop measurements.',
+    lede: 'One inch is exactly 25.4 millimetres.',
+    ledeReverse: 'One millimetre is 0.03937 inches.',
+    sections: [
+      {
+        h2: 'How many millimeters are in an inch?',
+        html: `<p><strong>mm = in × 25.4</strong></p>
+        <p>This is the workshop conversion. Millimetres are the working unit of technical drawing,
+        machining and European woodworking; inches are the working unit of American hardware. Anyone
+        with a mixed toolbox converts between them constantly.</p>`
+      },
+      {
+        h2: 'Fractional inches in the workshop',
+        html: `<p><strong>Inches in a workshop are fractional, not decimal.</strong> Drill bits,
+        sockets and timber come as 1/16, 1/8, 3/16, 1/4 and so on. Converting them means turning
+        the fraction into a decimal first: 3/8 inch is 0.375 in, which is 9.525 mm.</p>
+        <p>The near-misses cause real damage:</p>
+        <ul>
+          <li>1/4 in = 6.35 mm, close to 6 mm</li>
+          <li>3/8 in = 9.525 mm, close to 10 mm</li>
+          <li>1/2 in = 12.7 mm, close to 13 mm</li>
+          <li>3/4 in = 19.05 mm, close to 19 mm — the closest pair</li>
+        </ul>`
+      },
+      {
+        h2: 'The nominal pipe trap',
+        html: `<p>Plumbing adds a trap: pipe sizes in inches are nominal, not actual. A "1/2 inch"
+        pipe has neither an inner nor an outer diameter of 12.7 mm. The number is a legacy label,
+        not a measurement, so converting it gives a figure that matches nothing physical.</p>`
+      }
+    ],
+    faq: [
+      ['What is 3/8 inch in mm?', '9.525 mm. A 10 mm socket is close but not the same.'],
+      ['Is a 1/2 inch pipe actually 12.7 mm?', 'No. Pipe sizes in inches are nominal designations, not physical dimensions.'],
+      ['What is 25.4 mm in inches?', 'Exactly one inch. The relationship is a definition, not a measurement.']
+    ]
+  },
+
+  'length:millimeter:inch': {
+    title: 'Millimeters to Inches (mm to in) Converter',
+    description: 'Convert millimeters to inches. Divide by 25.4. Screen bezels, technical drawings, and fractional equivalents.',
+    lede: 'Divide millimetres by 25.4. Ten millimetres is 0.394 inches.',
+    ledeReverse: 'One inch is exactly 25.4 millimetres.',
+    sections: [
+      {
+        h2: 'How many inches is one millimeter?',
+        html: `<p><strong>in = mm ÷ 25.4</strong></p>
+        <p>The answer is almost always a fraction in disguise. A workshop does not want 0.394
+        inches — it wants to know that 10 mm sits between 3/8 (9.525 mm) and 13/32 (10.32 mm).
+        Converting metric to imperial in a practical setting means finding the nearest usable
+        fraction.</p>
+        <p>Anchor: <strong>25 mm is 0.984 inches</strong>, just under an inch — so a metre stick
+        and a yardstick diverge slowly but visibly.</p>`
+      },
+      {
+        h2: 'Camera sensor sizes: the inch that is not an inch',
+        html: `<p>Lens focal lengths are metric everywhere — 50 mm, 85 mm, 200 mm — while sensor
+        sizes are quoted in fractional inches (1/2.3", 1", APS-C). The inch measurements are not
+        even real inches; they are a legacy of vacuum tube diameters from the 1950s, and a "1 inch"
+        sensor is about 16 mm across. It is the one place where converting the number gives you an
+        answer that is technically correct and practically meaningless.</p>`
+      }
+    ],
+    faq: [
+      ['What is 10 mm in inches?', '0.3937 in, or roughly 25/64. The nearest common size is 3/8 in (9.525 mm).'],
+      ['Why is a "1 inch" camera sensor not 25.4 mm?', 'The designation comes from old video tube diameters, not from the sensor itself. A 1-inch sensor measures about 16 mm diagonally.'],
+      ['How many mm in a quarter inch?', '6.35 mm.']
+    ]
+  },
+
+  'length:yard:meter': {
+    title: 'Yards to Meters (yd to m) Converter',
+    description: 'Convert yards to meters. 1 yard = 0.9144 m exactly. American football, fabric, and swimming pools.',
+    lede: 'One yard is 0.9144 metres — about 8.5% shorter than a metre.',
+    ledeReverse: 'One metre is 1.09361 yards.',
+    sections: [
+      {
+        h2: 'How many meters is a yard?',
+        html: `<p><strong>m = yd × 0.9144</strong></p>
+        <p>The yard and the metre are close enough to be mistaken for each other and far enough
+        apart that the error compounds. Over 100 units you lose more than eight metres.</p>`
+      },
+      {
+        h2: 'Swimming: why yard and metre times are not comparable',
+        html: `<p>Competitive pools come in 25 m, 50 m and 25-yard configurations. A 100-yard
+        freestyle is 91.44 m, so American short-course yard times are systematically faster than
+        metric ones for the same swimmer. Governing bodies publish separate record lists rather
+        than convert.</p>`
+      },
+      {
+        h2: 'American football in metres',
+        html: `<p>100 yards between goal lines, 10 yards for a first down (9.14 m), and the field
+        including end zones running 120 yards or 109.7 m. Broadcasters outside the US convert the
+        field but never the plays, because "nine point one four metres to go" does not work.</p>`
+      },
+      {
+        h2: 'The fabric trap',
+        html: `<p>Textiles are sold by the yard in the US and by the metre elsewhere. A pattern
+        calling for 3 yards and a shop selling 3 metres leaves you with 26 cm of surplus. Reverse
+        it and you are 26 cm short.</p>
+        <p>Anchor: <strong>a yard is a metre minus about 9 cm</strong>, roughly the length of a
+        hand.</p>`
+      }
+    ],
+    faq: [
+      ['How long is an American football field in meters?', '91.44 m between the goal lines, or 109.73 m including both end zones.'],
+      ['Is a yard the same as a meter?', 'No. A yard is 0.9144 m, about 8.5% shorter.'],
+      ['Why are swimming records separate for yards and meters?', 'A 25-yard pool is shorter than a 25 m pool, so turn count and total distance differ. Times are not comparable.']
+    ]
+  },
+
+  'length:meter:yard': {
+    title: 'Meters to Yards (m to yd) Converter',
+    description: 'Convert meters to yards. 1 m = 1.09361 yd. Athletics, fabric, and the historical definition of the yard.',
+    lede: 'One metre is 1.09361 yards. A 100 m sprint is 109.36 yards.',
+    ledeReverse: 'One yard is 0.9144 metres.',
+    sections: [
+      {
+        h2: 'How many yards is a meter?',
+        html: `<p><strong>yd = m ÷ 0.9144</strong>, or m × 1.0936133.</p>
+        <p>Athletics shows the switch clearly. The classic imperial sprint was 100 yards; the
+        modern standard is 100 m, which is 9.36 yards longer. When athletics went metric in the
+        1970s, the old yard records became historical curiosities.</p>`
+      },
+      {
+        h2: 'How the yard got its current value',
+        html: `<p>The yard was defined by physical prototype bars for centuries, then in 1959
+        redefined as exactly 0.9144 m by the same agreement that fixed the inch and the pound.
+        The metric system won the definition; the imperial names survived the outcome.</p>`
+      },
+      {
+        h2: 'Golf: yards versus metres',
+        html: `<p>Course distances are marked in yards in the US and UK and in metres across most
+        of continental Europe, so a 150-yard marker is 137 m. Players who use a rangefinder set to
+        the wrong unit club themselves wrong by roughly one club length.</p>
+        <p>Anchor: <strong>100 m is about 109 yards</strong>, and a metre is a yard plus a hand's
+        width.</p>`
+      }
+    ],
+    faq: [
+      ['What is 100 m in yards?', '109.36 yards.'],
+      ['Was the yard originally based on a body measurement?', 'Several origin stories exist, most involving arm or stride length, but none is documented. Since 1959 it has been defined as exactly 0.9144 m.'],
+      ['How many yards in a mile?', '1,760 yards, which is 1,609.344 m.']
+    ]
+  },
+
+  'volume:deciliter:milliliter': {
+    title: 'Deciliters to Milliliters (dL to mL) Converter',
+    description: 'Convert deciliters to milliliters. 1 dL = 100 mL. Nordic and Swiss recipes, and why the deciliter survives in cooking.',
+    lede: 'One decilitre is 100 millilitres.',
+    ledeReverse: 'One millilitre is 0.01 decilitres.',
+    sections: [
+      {
+        h2: 'How many milliliters in a deciliter?',
+        html: `<p><strong>mL = dL × 100</strong></p>
+        <p>The interesting question is not the arithmetic — it is why anyone still uses decilitres.</p>`
+      },
+      {
+        h2: 'Why Nordic and Swiss kitchens use decilitres',
+        html: `<p><strong>In Nordic and Swiss kitchens, the decilitre is the standard cooking
+        measure.</strong> Swedish, Norwegian, Danish and Swiss-German recipes are written in dL
+        rather than mL or cups: 2 dL of flour, 5 dL of milk. Measuring jugs sold in those countries
+        are marked primarily in decilitres.</p>
+        <p>The logic is practical. A decilitre is roughly a small cup — 100 mL — so recipe
+        quantities come out as small whole numbers instead of the 250s and 500s that millilitres
+        produce.</p>`
+      },
+      {
+        h2: 'Decilitres, cups and the comparison worth having',
+        html: `<p>A US cup is 236.6 mL, a metric cup is 250 mL, and a decilitre is 100 mL. A recipe
+        calling for 2.5 dL is 250 mL, which is a metric cup exactly and a US cup plus about 6%.</p>
+        <p>For dry ingredients, remember that volume is not weight. Two decilitres of flour weighs
+        roughly 120 g and two decilitres of sugar roughly 170 g.</p>`
+      }
+    ],
+    faq: [
+      ['Why do Scandinavian recipes use deciliters?', 'It is the standard kitchen measure across the Nordic countries and Switzerland, giving small whole numbers where millilitres would give large ones.'],
+      ['Is a deciliter the same as a cup?', 'No. A decilitre is 100 mL; a US cup is 236.6 mL and a metric cup is 250 mL.'],
+      ['How many deciliters in a liter?', 'Ten.']
+    ]
+  },
+
+  'volume:milliliter:deciliter': {
+    title: 'Milliliters to Deciliters (mL to dL) Converter',
+    description: 'Convert milliliters to deciliters. Divide by 100. Reading Nordic recipes with a standard measuring jug.',
+    lede: 'Divide millilitres by 100. Two hundred and fifty millilitres is 2.5 dL.',
+    ledeReverse: 'One decilitre is 100 millilitres.',
+    sections: [
+      {
+        h2: 'How many deciliters is 100 mL?',
+        html: `<p><strong>dL = mL ÷ 100</strong></p>
+        <p>Exactly one. This direction is searched by people holding the wrong tool. A Swedish or
+        Swiss recipe asks for 2 dL of cream; the jug in the drawer is marked in millilitres from
+        50 to 500. The conversion is trivial, but the reflex to double-check it is sensible —
+        moving the point one place instead of two turns 200 mL into 20 dL, a twentyfold error.</p>`
+      },
+      {
+        h2: 'Measuring decilitres with a millilitre jug',
+        html: `<p>Most measuring jugs sold outside Scandinavia carry millilitre graduations at 50 mL
+        intervals, which maps cleanly onto half-decilitre steps. A recipe in whole and half
+        decilitres can be measured without arithmetic once you know that each 100 mL line is one
+        decilitre.</p>
+        <p>Where it becomes awkward is small quantities. A recipe asking for 0.5 dL of oil means
+        50 mL, which is about three and a half tablespoons — below the useful range of most jugs.
+        For anything under a decilitre, spoons are more accurate.</p>`
+      },
+      {
+        h2: 'Volume is not weight',
+        html: `<p>Two decilitres of water is 200 g, but two decilitres of flour is roughly 120 g
+        and two of honey around 280 g. Recipes that give dry ingredients by volume assume a
+        particular way of filling the measure, which is why baking by weight is more reliable than
+        baking by volume in any unit.</p>
+        <p>The reasoning behind the unit — and why Nordic and Swiss kitchens kept it — is on
+        <a href="/volume/deciliters-to-milliliters/">deciliters to milliliters</a>.</p>`
+      }
+    ],
+    faq: [
+      ['How many mL is 1 dL?', 'One hundred.'],
+      ['What is 250 mL in deciliters?', '2.5 dL.'],
+      ['Can I measure deciliters with a normal measuring jug?', 'Yes. Each 100 mL graduation is one decilitre, so a standard 500 mL jug covers up to 5 dL.']
     ]
   }
 };

@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import BrowseBlocks from '../components/BrowseBlocks.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
 const locale = 'en';
 const updated = 'August 31, 2026';
 ---
@@ -8,9 +9,13 @@ const updated = 'August 31, 2026';
   title="Privacy Policy — Skala Convert"
   description="Skala Convert runs every conversion in your browser and stores no visitor data. How cookies, Google AdSense and analytics work on this site, explained plainly."
   locale={locale}
-  alternates={[]}
+  alternates={[
+    { hreflang: 'en', href: 'https://skalaconvert.com/privacy-policy/' },
+    { hreflang: 'es', href: 'https://skalaconvert.com/es/politica-de-privacidad/' }
+  ]}
 >
   <main class="wrap">
+    <Breadcrumbs locale={locale} items={[{ label: "Privacy Policy" }]} />
     <div class="hero"><h1>Privacy Policy</h1></div>
 
     <section class="block legal">
