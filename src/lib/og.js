@@ -24,8 +24,8 @@ const el = (type, props, ...children) => ({
 export function cardTemplate({ category, from, to, locale }) {
   const one = convert(1, category, from, to);
   const equation = `1 ${symbols[from]} = ${formatNumber(one, locale)} ${symbols[to]}`;
-  const heading = locale === 'de'
-    ? `${unitName(from, locale)} in ${unitName(to, locale)}`
+  const heading = locale === 'es'
+    ? `${unitPlural(from, locale)} a ${unitPlural(to, locale)}`
     : `${unitPlural(from, locale)} to ${unitPlural(to, locale)}`;
   const categoryName = t(`categories.${category}`, locale);
 
